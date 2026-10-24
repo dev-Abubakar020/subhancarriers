@@ -108,7 +108,7 @@ export default function HeroSection() {
             {/* Dual CTAs & Trust Badges */}
             <div className="pt-4 flex flex-wrap items-center gap-4">
               <Button
-                to="/quote"
+                to="/contact"
                 variant="accent"
                 size="lg"
                 icon={ArrowRight}
