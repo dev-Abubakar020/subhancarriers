@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  Truck, 
-  MapPin, 
-  ArrowLeft, 
-  Home, 
-  Search, 
-  PhoneCall, 
-  PackageCheck, 
-  FileText 
+import {
+  Truck,
+  MapPin,
+  ArrowLeft,
+  Home,
+  Search,
+  PhoneCall,
+  PackageCheck,
+  FileText
 } from 'lucide-react';
 import SEO from '../components/ui/SEO';
 import Button from '../components/ui/Button';
@@ -32,7 +32,7 @@ export default function NotFound() {
             <div className="text-8xl sm:text-9xl font-black font-heading tracking-tighter text-slate-100 select-none">
               404
             </div>
-            
+
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="w-20 h-20 rounded-2xl bg-primary text-white flex items-center justify-center shadow-soft relative animate-bounce">
                 <Truck className="w-10 h-10 text-accent" />
@@ -58,13 +58,13 @@ export default function NotFound() {
               Popular Network Destinations
             </span>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+              <Link to="/" className="p-2.5 rounded-xl bg-white hover:bg-secondary hover:text-white transition-colors text-slate-700 font-semibold text-center border border-slate-100">
+                Home
+              </Link>
               <Link to="/services" className="p-2.5 rounded-xl bg-white hover:bg-secondary hover:text-white transition-colors text-slate-700 font-semibold text-center border border-slate-100">
                 Services
               </Link>
-              <Link to="/tracking" className="p-2.5 rounded-xl bg-white hover:bg-secondary hover:text-white transition-colors text-slate-700 font-semibold text-center border border-slate-100">
-                Tracking
-              </Link>
-              <Link to="/quote" className="p-2.5 rounded-xl bg-white hover:bg-secondary hover:text-white transition-colors text-slate-700 font-semibold text-center border border-slate-100">
+              <Link to="/contact" className="p-2.5 rounded-xl bg-white hover:bg-secondary hover:text-white transition-colors text-slate-700 font-semibold text-center border border-slate-100">
                 Get a Quote
               </Link>
               <Link to="/blog" className="p-2.5 rounded-xl bg-white hover:bg-secondary hover:text-white transition-colors text-slate-700 font-semibold text-center border border-slate-100">

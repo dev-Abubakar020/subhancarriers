@@ -10,8 +10,8 @@ import {
   ShieldCheck, 
   AlertCircle, 
   ArrowRight,
-  DollarSign,
-  PhoneCall
+  PhoneCall,
+  MessageCircle
 } from 'lucide-react';
 import SEO from '../components/ui/SEO';
 import PageHeader from '../components/ui/PageHeader';
@@ -19,6 +19,8 @@ import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
 import CTABanner from '../components/sections/CTABanner';
 import { siteConfig } from '../data/siteConfig';
+import PlacesAutocomplete from '../components/ui/PlacesAutocomplete';
+import { sendEmail } from '../utils/sendEmail';
 
 export default function Quote() {
   const [searchParams] = useSearchParams();
@@ -28,12 +30,12 @@ export default function Quote() {
     service: 'road-freight',
     origin: '',
     destination: '',
-    cargoType: 'General Dry Freight',
-    weightLbs: '18000',
-    pallets: '14',
+    cargoType: 'Household Shifting / General Goods',
+    vehicleNeeded: '15ft Mazda Truck with Tailgate',
+    weightKg: '2500',
+    itemCount: '30 Cartons & Furniture',
     pickupDate: '',
-    temperatureNeeded: 'No',
-    hazardous: 'No',
+    packingNeeded: 'Yes',
     fullName: '',
     company: '',
     email: '',
@@ -46,6 +48,7 @@ export default function Quote() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [quoteReference, setQuoteReference] = useState('');
   const [estimatedPrice, setEstimatedPrice] = useState(null);
+  const [sendError, setSendError] = useState(null);
 
   // Read URL params if user arrived via "Book Road Freight" or equipment buttons
   useEffect(() => {
@@ -55,7 +58,7 @@ export default function Quote() {
       setFormData(prev => ({ ...prev, service: sParam }));
     }
     if (eqParam) {
-      setFormData(prev => ({ ...prev, cargoType: `Specialized: ${eqParam}` }));
+      setFormData(prev => ({ ...prev, vehicleNeeded: eqParam }));
     }
     // Set default pickup date to tomorrow
     const tomorrow = new Date();
@@ -64,30 +67,29 @@ export default function Quote() {
     setFormData(prev => ({ ...prev, pickupDate: dateStr }));
   }, [searchParams]);
 
-  // Live Estimate Calculator
+  // Live PKR Estimate Calculator
   useEffect(() => {
-    const weight = parseFloat(formData.weightLbs) || 10000;
-    const pallets = parseInt(formData.pallets) || 10;
-    let baseRate = 1200;
+    const weight = parseFloat(formData.weightKg) || 1500;
+    let baseRate = 18000;
 
     if (formData.service === 'road-freight') {
-      baseRate = 1450 + (pallets * 45) + (weight * 0.045);
+      baseRate = 22000 + (weight * 2.8);
     } else if (formData.service === 'express-delivery') {
-      baseRate = 2200 + (weight * 0.08);
+      baseRate = 28000 + (weight * 3.5);
     } else if (formData.service === 'heavy-haulage') {
-      baseRate = 4500 + (weight * 0.12);
+      baseRate = 55000 + (weight * 4.2);
     } else if (formData.service === 'warehousing') {
-      baseRate = 650 + (pallets * 22);
+      baseRate = 15000 + (weight * 1.5);
     }
 
-    if (formData.temperatureNeeded === 'Yes') {
-      baseRate += 350;
+    if (formData.packingNeeded === 'Yes') {
+      baseRate += 6500;
     }
 
-    const minEstimate = Math.round(baseRate * 0.92);
+    const minEstimate = Math.round(baseRate * 0.9);
     const maxEstimate = Math.round(baseRate * 1.15);
     setEstimatedPrice({ min: minEstimate, max: maxEstimate });
-  }, [formData.service, formData.weightLbs, formData.pallets, formData.temperatureNeeded]);
+  }, [formData.service, formData.weightKg, formData.packingNeeded]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -97,50 +99,72 @@ export default function Quote() {
     }
   };
 
+  // Handler for PlacesAutocomplete (receives name + value directly)
+  const handlePlaceChange = (name, value) => {
+    setFormData(prev => ({ ...prev, [name]: value }));
+    if (errors[name]) {
+      setErrors(prev => ({ ...prev, [name]: null }));
+    }
+  };
+
   const validate = () => {
     const newErrors = {};
-    if (!formData.origin.trim()) newErrors.origin = 'Origin city/state or zip is required';
+    if (!formData.origin.trim()) newErrors.origin = 'Origin city (e.g. Lahore, Faisalabad) is required';
     if (formData.service !== 'warehousing' && !formData.destination.trim()) {
-      newErrors.destination = 'Destination city/state or zip is required';
+      newErrors.destination = 'Destination city (e.g. Karachi, Islamabad) is required';
     }
-    if (!formData.fullName.trim()) newErrors.fullName = 'Contact name is required';
-    if (!formData.email.trim() || !formData.email.includes('@')) {
-      newErrors.email = 'Valid corporate email is required';
-    }
-    if (!formData.phone.trim()) newErrors.phone = 'Phone number is required';
-    if (!formData.pickupDate) newErrors.pickupDate = 'Target date is required';
+    if (!formData.fullName.trim()) newErrors.fullName = 'Full contact name is required';
+    if (!formData.phone.trim()) newErrors.phone = 'Active phone or WhatsApp number is required';
+    if (!formData.pickupDate) newErrors.pickupDate = 'Target moving date is required';
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validate()) return;
 
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
+    setSendError(null);
+
+    const ref = 'SC-QT-' + Math.floor(100000 + Math.random() * 900000);
+    setQuoteReference(ref);
+
+    const result = await sendEmail('quote', {
+      ...formData,
+      quoteReference: ref,
+      estimatedMin: estimatedPrice?.min ?? 0,
+      estimatedMax: estimatedPrice?.max ?? 0,
+    });
+
+    setIsSubmitting(false);
+
+    if (result.success) {
       setIsSubmitted(true);
-      const randomRef = 'QT-' + Math.floor(100000 + Math.random() * 900000);
-      setQuoteReference(randomRef);
-    }, 1200);
+    } else {
+      setSendError('Could not send your quote request. Please WhatsApp or call us at (+92) 300-6539785.');
+    }
   };
+
+  const whatsappMessage = encodeURIComponent(
+    `Hello Subhan Carriers, I want a rate quote.\nReference: ${quoteReference || 'New Request'}\nService: ${formData.service}\nFrom: ${formData.origin}\nTo: ${formData.destination}\nVehicle: ${formData.vehicleNeeded}\nDate: ${formData.pickupDate}\nName: ${formData.fullName}\nPhone: ${formData.phone}`
+  );
 
   const breadcrumbs = [{ name: 'Get a Quote', path: '/quote' }];
 
   return (
     <>
       <SEO
-        title="Get an Instant Freight Quote - Fast Rate Confirmations"
-        description="Request a fast, transparent freight rate quote from Subhan Carriers for nationwide road freight, warehousing, express delivery, or heavy haulage."
+        title="Get a Moving & Freight Rate Quote - Subhan Carriers Pakistan"
+        description="Calculate instant moving and goods transport rates in Pakistan for Lahore, Karachi, Islamabad, Faisalabad, and nationwide routes. Zero hidden fees."
         canonical="/quote"
       />
 
       <PageHeader
-        badge="Instant Freight Calculation"
-        title="Request a Competitive Freight Rate Quote"
-        subtitle="Complete our quick freight specification form to calculate instant lane pricing and receive guaranteed rate confirmation within 15 minutes."
+        badge="Instant Freight & Shifting Estimate"
+        title="Get a Competitive Moving & Transport Quote"
+        subtitle="Complete our quick details form to calculate estimated lane rates in PKR and receive confirmed vehicle availability within minutes."
         breadcrumbs={breadcrumbs}
       />
 
@@ -155,7 +179,7 @@ export default function Quote() {
               </div>
 
               <span className="text-xs font-bold uppercase tracking-wider text-secondary px-3 py-1 rounded-full bg-secondary/10 dark:bg-secondary/20 border border-secondary/20 inline-block mb-3">
-                Quote Request Tendered
+                Quote Request Registered
               </span>
 
               <h2 className="text-2xl sm:text-3xl font-bold font-heading text-heading dark:text-white mb-2">
@@ -163,45 +187,48 @@ export default function Quote() {
               </h2>
 
               <p className="text-sm text-body dark:text-slate-400 leading-relaxed mb-6">
-                Your freight inquiry has been assigned to our central dispatch desk. A dedicated logistics coordinator is reviewing lane capacity and will dispatch your official rate confirmation with binding fuel surcharge breakdown shortly.
+                Your moving & transport inquiry has been routed to our central dispatch desk in Jaranwala/Faisalabad. A coordinator will call or message you on WhatsApp to confirm truck arrangement and final pricing.
               </p>
 
-              <div className="bg-surface-light dark:bg-slate-800/80 p-4 rounded-2xl border border-slate-200 dark:border-slate-700 mb-8 inline-block text-left w-full">
-                <div className="grid grid-cols-2 gap-3 text-xs sm:text-sm">
+              <div className="bg-surface-light dark:bg-slate-800/80 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 mb-8 inline-block text-left w-full">
+                <div className="grid grid-cols-2 gap-4 text-xs sm:text-sm">
                   <div>
-                    <span className="text-slate-400 block text-[11px] uppercase font-semibold">Reference Number</span>
+                    <span className="text-slate-400 block text-[11px] uppercase font-semibold">Quote Reference</span>
                     <span className="font-mono font-bold text-secondary text-base">{quoteReference}</span>
                   </div>
                   <div>
-                    <span className="text-slate-400 block text-[11px] uppercase font-semibold">Estimated Range</span>
-                    <span className="font-bold text-accent text-base">${estimatedPrice?.min.toLocaleString()} - ${estimatedPrice?.max.toLocaleString()}</span>
+                    <span className="text-slate-400 block text-[11px] uppercase font-semibold">Estimated PKR Range</span>
+                    <span className="font-bold text-accent text-base">Rs. {estimatedPrice?.min.toLocaleString()} - {estimatedPrice?.max.toLocaleString()}</span>
                   </div>
                   <div>
-                    <span className="text-slate-400 block text-[11px] uppercase font-semibold">Lane</span>
-                    <span className="font-semibold text-heading dark:text-white truncate block">{formData.origin} &rarr; {formData.destination || 'Storage Hub'}</span>
+                    <span className="text-slate-400 block text-[11px] uppercase font-semibold">Route</span>
+                    <span className="font-semibold text-heading dark:text-white truncate block">{formData.origin} &rarr; {formData.destination || 'Storage'}</span>
                   </div>
                   <div>
-                    <span className="text-slate-400 block text-[11px] uppercase font-semibold">Target Pickup</span>
+                    <span className="text-slate-400 block text-[11px] uppercase font-semibold">Moving Date</span>
                     <span className="font-semibold text-heading dark:text-white block">{formData.pickupDate}</span>
                   </div>
                 </div>
               </div>
 
               <div className="flex flex-wrap items-center justify-center gap-4">
+                <a
+                  href={`https://wa.me/923006539785?text=${whatsappMessage}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm transition-colors shadow-glow"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  <span>Confirm on WhatsApp Instantly</span>
+                </a>
+
                 <Button
                   onClick={() => { setIsSubmitted(false); }}
-                  variant="primary"
-                  size="md"
-                >
-                  Submit Another Quote
-                </Button>
-                <Button
-                  to="/tracking"
                   variant="outline"
                   size="md"
                   className="dark:border-slate-700 dark:text-slate-200"
                 >
-                  Track Existing Shipment
+                  Submit Another Quote
                 </Button>
               </div>
             </div>
@@ -212,20 +239,27 @@ export default function Quote() {
               {/* Left Column: Form (8 Cols) */}
               <div className="lg:col-span-8 bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-10 border border-slate-100 dark:border-slate-800 shadow-soft">
                 <form onSubmit={handleSubmit} className="space-y-8">
-                  
+                  {/* API Error Banner */}
+                  {sendError && (
+                    <div className="p-4 rounded-xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-300 text-sm flex items-start gap-3">
+                      <span className="text-lg shrink-0">⚠️</span>
+                      <span>{sendError}</span>
+                    </div>
+                  )}
+
                   {/* Step 1: Service Selection */}
                   <div>
                     <h3 className="text-lg font-bold font-heading text-heading dark:text-white mb-4 flex items-center gap-2">
                       <Truck className="w-5 h-5 text-secondary" />
-                      <span>1. Select Required Logistics Service</span>
+                      <span>1. Select Required Transport or Moving Service</span>
                     </h3>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       {[
-                        { id: 'road-freight', name: 'Road Freight (FTL / LTL)', desc: 'Standard 53ft highway van & reefer transport' },
-                        { id: 'warehousing', name: 'Warehousing & Storage', desc: 'Secure pallet storage & fulfillment centers' },
-                        { id: 'express-delivery', name: 'Express / Expedited', desc: 'Guaranteed non-stop team highway transit' },
-                        { id: 'heavy-haulage', name: 'Heavy Haulage', desc: 'Multi-axle RGN lowboys & oversized permits' }
+                        { id: 'road-freight', name: 'Goods Transport & Freight', desc: 'Mazda 15ft, Shehzore & Inter-city container trucking' },
+                        { id: 'warehousing', name: 'Household Shifting & Packing', desc: 'Complete house moving with expert packing & assembly' },
+                        { id: 'express-delivery', name: 'Express Same-Day Delivery', desc: 'Direct fast transit between adjoining Pakistani cities' },
+                        { id: 'heavy-haulage', name: 'Commercial & Heavy Cargo', desc: 'Office relocation, mill machinery & CPEC route transport' }
                       ].map((svc) => (
                         <label
                           key={svc.id}
@@ -257,47 +291,43 @@ export default function Quote() {
                   <div>
                     <h3 className="text-lg font-bold font-heading text-heading dark:text-white mb-4 flex items-center gap-2">
                       <MapPin className="w-5 h-5 text-secondary" />
-                      <span>2. Route Origin & Destination</span>
+                      <span>2. Route Origin & Destination Across Pakistan</span>
                     </h3>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase mb-1">
-                          Origin (City, State or Zip) *
+                        <label htmlFor="origin" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase mb-1">
+                          Pickup City & Area *
                         </label>
-                        <input
-                          type="text"
+                        <PlacesAutocomplete
+                          id="origin"
                           name="origin"
                           value={formData.origin}
-                          onChange={handleChange}
-                          placeholder="e.g. Chicago, IL or 60607"
-                          className={`w-full px-4 py-2.5 rounded-xl border text-sm focus:outline-none focus:ring-2 focus:ring-secondary bg-white dark:bg-slate-800 dark:border-slate-700 text-heading dark:text-white ${
-                            errors.origin ? 'border-red-400 bg-red-50/50 dark:bg-red-950/20' : 'border-slate-200'
-                          }`}
+                          onChange={handlePlaceChange}
+                          placeholder="e.g. Lahore, Faisalabad, Multan..."
+                          error={!!errors.origin}
                         />
                         {errors.origin && <p className="text-xs text-red-500 mt-1">{errors.origin}</p>}
                       </div>
 
                       <div>
-                        <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase mb-1">
-                          Destination (City, State or Zip) {formData.service === 'warehousing' ? '(Optional)' : '*'}
+                        <label htmlFor="destination" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase mb-1">
+                          Destination City & Area {formData.service === 'warehousing' ? '(Optional)' : '*'}
                         </label>
-                        <input
-                          type="text"
+                        <PlacesAutocomplete
+                          id="destination"
                           name="destination"
                           value={formData.destination}
-                          onChange={handleChange}
-                          placeholder="e.g. Atlanta, GA or 30303"
-                          className={`w-full px-4 py-2.5 rounded-xl border text-sm focus:outline-none focus:ring-2 focus:ring-secondary bg-white dark:bg-slate-800 dark:border-slate-700 text-heading dark:text-white ${
-                            errors.destination ? 'border-red-400 bg-red-50/50 dark:bg-red-950/20' : 'border-slate-200'
-                          }`}
+                          onChange={handlePlaceChange}
+                          placeholder="e.g. Karachi, Islamabad, Rawalpindi..."
+                          error={!!errors.destination}
                         />
                         {errors.destination && <p className="text-xs text-red-500 mt-1">{errors.destination}</p>}
                       </div>
 
                       <div>
                         <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase mb-1">
-                          Target Pickup Date *
+                          Target Moving / Dispatch Date *
                         </label>
                         <input
                           type="date"
@@ -313,67 +343,72 @@ export default function Quote() {
 
                       <div>
                         <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase mb-1">
-                          Temperature Control Needed?
+                          Vehicle Preferred
                         </label>
                         <select
-                          name="temperatureNeeded"
-                          value={formData.temperatureNeeded}
+                          name="vehicleNeeded"
+                          value={formData.vehicleNeeded}
                           onChange={handleChange}
                           className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-secondary bg-white dark:bg-slate-800 text-heading dark:text-white"
                         >
-                          <option value="No">No - Standard Ambient Van</option>
-                          <option value="Yes">Yes - Refrigerated Reefer (-20°F to 70°F)</option>
+                          <option value="15ft Mazda Truck with Tailgate">15ft Mazda Truck with Hydraulic Tailgate</option>
+                          <option value="10ft Covered with Tailgate">10ft Covered Shehzore with Tailgate</option>
+                          <option value="10ft Open Truck">10ft Open Truck</option>
+                          <option value="15ft Truck without Tailgate">15ft Heavy Truck without Tailgate</option>
+                          <option value="24ft Container Truck">24ft Long Chassis Truck with Tailgate</option>
+                          <option value="40ft Container Trailer">40ft Multi-Axle CPEC Trailer</option>
                         </select>
                       </div>
                     </div>
                   </div>
 
-                  {/* Step 3: Cargo Details */}
+                  {/* Step 3: Goods & Packing Details */}
                   <div>
                     <h3 className="text-lg font-bold font-heading text-heading dark:text-white mb-4 flex items-center gap-2">
                       <Package className="w-5 h-5 text-secondary" />
-                      <span>3. Cargo Weight & Pallet Metrics</span>
+                      <span>3. Goods & Packing Requirements</span>
                     </h3>
 
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                       <div>
                         <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase mb-1">
-                          Total Weight (lbs)
+                          Approx. Weight (kg)
                         </label>
                         <input
                           type="number"
-                          name="weightLbs"
-                          value={formData.weightLbs}
+                          name="weightKg"
+                          value={formData.weightKg}
                           onChange={handleChange}
-                          placeholder="e.g. 18000"
+                          placeholder="e.g. 2500"
                           className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-heading dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-secondary"
                         />
                       </div>
 
                       <div>
                         <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase mb-1">
-                          Pallet Count (Standard 48x40)
+                          Full Packing Service Needed?
                         </label>
-                        <input
-                          type="number"
-                          name="pallets"
-                          value={formData.pallets}
+                        <select
+                          name="packingNeeded"
+                          value={formData.packingNeeded}
                           onChange={handleChange}
-                          placeholder="e.g. 14"
-                          className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-heading dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-secondary"
-                        />
+                          className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-secondary bg-white dark:bg-slate-800 text-heading dark:text-white"
+                        >
+                          <option value="Yes">Yes - Full Packing (Bubble wrap, cartons & assembly)</option>
+                          <option value="No">No - Transport Only (Self-Packed)</option>
+                        </select>
                       </div>
 
                       <div>
                         <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase mb-1">
-                          Commodity / Cargo Type
+                          Item Description
                         </label>
                         <input
                           type="text"
                           name="cargoType"
                           value={formData.cargoType}
                           onChange={handleChange}
-                          placeholder="e.g. Automotive parts"
+                          placeholder="e.g. 3-Bed House Furniture or Textile rolls"
                           className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-heading dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-secondary"
                         />
                       </div>
@@ -384,7 +419,7 @@ export default function Quote() {
                   <div>
                     <h3 className="text-lg font-bold font-heading text-heading dark:text-white mb-4 flex items-center gap-2">
                       <ShieldCheck className="w-5 h-5 text-secondary" />
-                      <span>4. Shipper Contact Information</span>
+                      <span>4. Your Contact Information</span>
                     </h3>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -397,7 +432,7 @@ export default function Quote() {
                           name="fullName"
                           value={formData.fullName}
                           onChange={handleChange}
-                          placeholder="John Doe"
+                          placeholder="Muhammad Usman"
                           className={`w-full px-4 py-2.5 rounded-xl border text-sm focus:outline-none focus:ring-2 focus:ring-secondary bg-white dark:bg-slate-800 dark:border-slate-700 text-heading dark:text-white ${
                             errors.fullName ? 'border-red-400 bg-red-50/50 dark:bg-red-950/20' : 'border-slate-200'
                           }`}
@@ -407,45 +442,14 @@ export default function Quote() {
 
                       <div>
                         <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase mb-1">
-                          Company / Business Name
-                        </label>
-                        <input
-                          type="text"
-                          name="company"
-                          value={formData.company}
-                          onChange={handleChange}
-                          placeholder="Acme Supply Corp."
-                          className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-heading dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-secondary"
-                        />
-                      </div>
-
-                      <div>
-                        <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase mb-1">
-                          Corporate Email *
-                        </label>
-                        <input
-                          type="email"
-                          name="email"
-                          value={formData.email}
-                          onChange={handleChange}
-                          placeholder="john@company.com"
-                          className={`w-full px-4 py-2.5 rounded-xl border text-sm focus:outline-none focus:ring-2 focus:ring-secondary bg-white dark:bg-slate-800 dark:border-slate-700 text-heading dark:text-white ${
-                            errors.email ? 'border-red-400 bg-red-50/50 dark:bg-red-950/20' : 'border-slate-200'
-                          }`}
-                        />
-                        {errors.email && <p className="text-xs text-red-500 mt-1">{errors.email}</p>}
-                      </div>
-
-                      <div>
-                        <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase mb-1">
-                          Phone Number *
+                          Phone / WhatsApp Number *
                         </label>
                         <input
                           type="tel"
                           name="phone"
                           value={formData.phone}
                           onChange={handleChange}
-                          placeholder="+1 (555) 000-0000"
+                          placeholder="0300-6539785"
                           className={`w-full px-4 py-2.5 rounded-xl border text-sm focus:outline-none focus:ring-2 focus:ring-secondary bg-white dark:bg-slate-800 dark:border-slate-700 text-heading dark:text-white ${
                             errors.phone ? 'border-red-400 bg-red-50/50 dark:bg-red-950/20' : 'border-slate-200'
                           }`}
@@ -453,16 +457,44 @@ export default function Quote() {
                         {errors.phone && <p className="text-xs text-red-500 mt-1">{errors.phone}</p>}
                       </div>
 
+                      <div>
+                        <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase mb-1">
+                          Email Address (Optional)
+                        </label>
+                        <input
+                          type="email"
+                          name="email"
+                          value={formData.email}
+                          onChange={handleChange}
+                          placeholder="usman@gmail.com"
+                          className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-heading dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-secondary"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase mb-1">
+                          Company Name (If Commercial Cargo)
+                        </label>
+                        <input
+                          type="text"
+                          name="company"
+                          value={formData.company}
+                          onChange={handleChange}
+                          placeholder="Textile / Trading Co."
+                          className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-heading dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-secondary"
+                        />
+                      </div>
+
                       <div className="sm:col-span-2">
                         <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase mb-1">
-                          Special Handling Instructions or Dock Hours
+                          Special Instructions or Floor Details
                         </label>
                         <textarea
                           rows={3}
                           name="notes"
                           value={formData.notes}
                           onChange={handleChange}
-                          placeholder="e.g. Liftgate required at delivery dock, strict delivery appointment window between 08:00 AM - 11:00 AM..."
+                          placeholder="e.g. Ground floor to 2nd floor, large double door fridge, delicate crockery boxes requiring bubble wrap..."
                           className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-heading dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-secondary"
                         />
                       </div>
@@ -470,10 +502,10 @@ export default function Quote() {
                   </div>
 
                   {/* Submit Button */}
-                  <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                  <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-4">
                     <span className="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
                       <ShieldCheck className="w-4 h-4 text-highlight" />
-                      <span>$5,000,000 cargo insurance coverage included</span>
+                      <span>Safe Delivery Guarantee &bull; Online & Cash on Delivery</span>
                     </span>
 
                     <Button
@@ -483,7 +515,7 @@ export default function Quote() {
                       isLoading={isSubmitting}
                       icon={ArrowRight}
                     >
-                      Tender Quote Request
+                      Calculate & Request Quote
                     </Button>
                   </div>
                 </form>
@@ -498,10 +530,10 @@ export default function Quote() {
                     </div>
                     <div>
                       <h4 className="font-heading font-bold text-base text-heading dark:text-white">
-                        Estimated Lane Rate
+                        Estimated Moving Rate
                       </h4>
                       <p className="text-[11px] text-slate-400">
-                        Based on current diesel & spot indices
+                        Transparent rates in Pakistani Rupees (PKR)
                       </p>
                     </div>
                   </div>
@@ -511,45 +543,52 @@ export default function Quote() {
                     <span className="text-xs uppercase font-semibold text-slate-500 dark:text-slate-400 block mb-1">
                       Estimated Freight Bracket
                     </span>
-                    <div className="text-3xl font-extrabold font-heading text-primary dark:text-white">
-                      ${estimatedPrice?.min.toLocaleString()} - ${estimatedPrice?.max.toLocaleString()}
+                    <div className="text-2xl sm:text-3xl font-extrabold font-heading text-primary dark:text-white">
+                      Rs. {estimatedPrice?.min.toLocaleString()} - {estimatedPrice?.max.toLocaleString()}
                     </div>
                     <span className="text-[11px] text-slate-400 mt-1 block">
-                      Includes baseline fuel surcharge & standard transit
+                      Includes loading assistance, vehicle & fuel (No hidden fees)
                     </span>
                   </div>
 
                   {/* Summary Checklist */}
                   <div className="space-y-3 text-xs text-slate-600 dark:text-slate-300 mb-6">
                     <div className="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-800">
-                      <span>Service:</span>
-                      <span className="font-bold text-heading dark:text-white capitalize">{formData.service.replace('-', ' ')}</span>
+                      <span>Vehicle:</span>
+                      <span className="font-bold text-heading dark:text-white truncate max-w-[170px] text-right">{formData.vehicleNeeded}</span>
                     </div>
                     <div className="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-800">
-                      <span>Capacity:</span>
-                      <span className="font-bold text-heading dark:text-white">{formData.pallets} Pallets ({formData.weightLbs} lbs)</span>
+                      <span>Packing:</span>
+                      <span className="font-bold text-heading dark:text-white">{formData.packingNeeded === 'Yes' ? 'Full Packaging Plan' : 'Transport Only'}</span>
                     </div>
                     <div className="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-800">
-                      <span>Temperature:</span>
-                      <span className="font-bold text-heading dark:text-white">{formData.temperatureNeeded === 'Yes' ? 'Active Reefer' : 'Dry Van'}</span>
+                      <span>Payment:</span>
+                      <span className="font-bold text-emerald-600 dark:text-emerald-400">Hand Cash / Online Transfer</span>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span>e-POD Ready:</span>
-                      <span className="font-bold text-emerald-500">Yes (15-min delivery)</span>
+                      <span>Assistance:</span>
+                      <span className="font-bold text-secondary">Skilled Movers & Tailgate</span>
                     </div>
                   </div>
 
-                  {/* Emergency Dispatch Assistance */}
-                  <div className="pt-4 border-t border-slate-100 dark:border-slate-800 text-center">
-                    <p className="text-xs text-body dark:text-slate-400 mb-3">
-                      Need a hot-shot tractor dispatched within the hour?
-                    </p>
+                  {/* WhatsApp Direct Booking Button */}
+                  <div className="pt-4 border-t border-slate-100 dark:border-slate-800 text-center space-y-2">
+                    <a
+                      href="https://wa.me/923006539785"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold transition-colors shadow-soft"
+                    >
+                      <MessageCircle className="w-4 h-4" />
+                      <span>Chat on WhatsApp: +92 300 6539785</span>
+                    </a>
+
                     <a
                       href={`tel:${siteConfig.contact.phonePrimary.replace(/[^\d+]/g, '')}`}
                       className="inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl bg-primary text-white hover:bg-primary-700 text-xs font-semibold transition-colors"
                     >
                       <PhoneCall className="w-3.5 h-3.5 text-accent" />
-                      <span>Call Central Dispatch: {siteConfig.contact.phonePrimary}</span>
+                      <span>Call Helpline: {siteConfig.contact.phonePrimary}</span>
                     </a>
                   </div>
                 </div>
@@ -558,10 +597,10 @@ export default function Quote() {
                 <div className="bg-gradient-to-br from-primary-900 to-primary-950 text-white p-6 rounded-3xl border border-white/10 shadow-soft">
                   <h4 className="font-heading font-bold text-sm mb-2 flex items-center gap-2">
                     <ShieldCheck className="w-4 h-4 text-highlight" />
-                    <span>The Subhan Rate Guarantee</span>
+                    <span>The Subhan Carriers Promise</span>
                   </h4>
                   <p className="text-xs text-slate-300 leading-relaxed">
-                    Once our logistics desk verifies your pickup and drop windows, your quoted lane rate is 100% locked. We never bill surprise detention or unverified accessorials.
+                    We heartily understand and value the emotions of our customers. All of your goods are guaranteed to be safely delivered to your new doorstep without damage or hidden expenses.
                   </p>
                 </div>
 
@@ -575,8 +614,8 @@ export default function Quote() {
 
       {/* CTA Banner */}
       <CTABanner
-        title="Looking for Dedicated Contract Lane Pricing?"
-        subtitle="For shippers tendering recurring weekly volume, speak with our enterprise account directors for guaranteed quarterly rate locks."
+        title="Need an Immediate Dispatch Today?"
+        subtitle="Call our 24/7 hotline directly or chat with coordinator Ali Akbar on WhatsApp at +923006539785."
       />
     </>
   );

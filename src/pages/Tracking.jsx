@@ -28,66 +28,66 @@ import { siteConfig } from '../data/siteConfig';
 const mockShipments = {
   "SC-89241": {
     trackingNumber: "SC-89241",
-    bolNumber: "BOL-2026-9812",
+    bolNumber: "BOL-PK-9812",
     status: "In Transit",
     statusBadge: "On Schedule",
-    service: "Road Freight - 53ft Multi-Zone Reefer",
+    service: "Inter-City Goods Transport - 15ft Mazda Truck",
     origin: {
-      facility: "Subhan Carriers Chicago Central Hub",
-      city: "Chicago, IL",
-      date: "Oct 21, 2026 - 06:30 AM",
+      facility: "Subhan Carriers Central Goods Terminal",
+      city: "Jaranwala / Faisalabad",
+      date: "Oct 23, 2026 - 07:00 AM",
       completed: true
     },
     destination: {
-      facility: "Southeast Regional Distribution Depot",
-      city: "Atlanta, GA",
-      eta: "Oct 22, 2026 - 04:45 PM",
+      facility: "Karachi Port Qasim Freight Terminal",
+      city: "Karachi, Sindh",
+      eta: "Oct 24, 2026 - 06:30 PM",
       completed: false
     },
-    currentLocation: "I-65 Southbound (Mile Marker 182, near Bowling Green, KY)",
-    speed: "64 MPH",
-    temperature: "-4.2°F (Target: -5.0°F)",
-    driverTeam: "Team #14 (D. Harris & J. Miller)",
-    equipment: "Freightliner Cascadia #T-408 / Reefer #R-912",
-    cargoDescription: "Frozen Pharmaceutical Vaccines & Diagnostic Reagents (22 Pallets / 38,400 lbs)",
+    currentLocation: "M-5 Motorway Southbound (Passing Rohri / Sukkur Bypass)",
+    speed: "78 KM/H",
+    temperature: "Ambient Weather Sealed",
+    driverTeam: "Subhan Crew (M. Riaz & Tariq Mehmood)",
+    equipment: "Mazda Titan 15ft #FD-412 with Power Tailgate",
+    cargoDescription: "Industrial Textile & General Commercial Freight (3,800 kg)",
     steps: [
-      { title: "Cargo Picked Up & Tamper-Seal Affixed", time: "Oct 21, 2026 - 06:30 AM", location: "Chicago, IL", done: true },
-      { title: "Departed Chicago Mega Distribution Hub", time: "Oct 21, 2026 - 07:15 AM", location: "Chicago, IL", done: true },
-      { title: "Crossed Indiana State Line / Telemetry OK", time: "Oct 21, 2026 - 10:45 AM", location: "Crown Point, IN", done: true },
-      { title: "In Highway Transit - Passing Bowling Green", time: "Oct 21, 2026 - 02:15 PM", location: "Bowling Green, KY", done: true, current: true },
-      { title: "Arrival at Nashville Inspection Staging", time: "Oct 21, 2026 - 06:00 PM (Est.)", location: "Nashville, TN", done: false },
-      { title: "Final Mile Delivery & e-POD Signature", time: "Oct 22, 2026 - 04:45 PM (Est.)", location: "Atlanta, GA", done: false },
+      { title: "Goods Loaded & Tailgate Sealed at Terminal", time: "Oct 23, 2026 - 07:00 AM", location: "Jaranwala / Faisalabad", done: true },
+      { title: "Departed Faisalabad Central Hub via M-4", time: "Oct 23, 2026 - 08:15 AM", location: "Faisalabad, Punjab", done: true },
+      { title: "Crossed Multan Regional Transit Station", time: "Oct 23, 2026 - 01:45 PM", location: "Multan, South Punjab", done: true },
+      { title: "Highway In-Transit - Passing Sukkur Bypass", time: "Oct 24, 2026 - 06:15 AM", location: "Sukkur, Sindh", done: true, current: true },
+      { title: "Arrival at Hyderabad Toll Staging", time: "Oct 24, 2026 - 02:00 PM (Est.)", location: "Hyderabad, Sindh", done: false },
+      { title: "Doorstep Delivery & Consignee POD Signature", time: "Oct 24, 2026 - 06:30 PM (Est.)", location: "Karachi, Sindh", done: false },
     ]
   },
   "SC-77103": {
     trackingNumber: "SC-77103",
-    bolNumber: "BOL-2026-6450",
+    bolNumber: "BOL-PK-6450",
     status: "Delivered",
-    statusBadge: "Completed Ahead of Time",
-    service: "Express Delivery - Dedicated Team",
+    statusBadge: "Safely Delivered to Doorstep",
+    service: "Full House Shifting & Furniture Packing Plan",
     origin: {
-      facility: "Dallas Freight Terminal",
-      city: "Dallas, TX",
-      date: "Oct 20, 2026 - 04:00 AM",
+      facility: "Residential Pickup (DHA Phase 5)",
+      city: "Lahore, Punjab",
+      date: "Oct 22, 2026 - 08:00 AM",
       completed: true
     },
     destination: {
-      facility: "Los Angeles Long Beach Gateway",
-      city: "Los Angeles, CA",
-      eta: "Delivered on Oct 21, 2026 - 11:15 AM",
+      facility: "Delivered to Residence (Sector F-7)",
+      city: "Islamabad, ICT",
+      eta: "Delivered on Oct 22, 2026 - 05:45 PM",
       completed: true
     },
-    currentLocation: "Delivered at Long Beach Terminal (Dock Bay 4)",
-    speed: "0 MPH (Docked)",
-    temperature: "Ambient (Dry Van)",
-    driverTeam: "Team #08 (R. Peterson & A. Davis)",
-    equipment: "Kenworth T680 #T-219 / Dry Van #V-882",
-    cargoDescription: "Automotive Precision Sub-Assemblies (Line-Down Critical)",
+    currentLocation: "Delivered at Destination Residence (Islamabad)",
+    speed: "0 KM/H (Completed)",
+    temperature: "Protected Multi-Layer Packing",
+    driverTeam: "Packing Crew #04 (Lead: Dilbar Ali)",
+    equipment: "Shehzore Covered 10ft Truck #LH-8902",
+    cargoDescription: "Complete Household Furniture, Electronics, Beds (Dismantled & Reassembled)",
     steps: [
-      { title: "Dispatched from Dallas Terminal", time: "Oct 20, 2026 - 04:00 AM", location: "Dallas, TX", done: true },
-      { title: "Mid-Route Inspection - El Paso Checkpoint", time: "Oct 20, 2026 - 03:30 PM", location: "El Paso, TX", done: true },
-      { title: "Arizona Interstate Transit Corridor", time: "Oct 21, 2026 - 02:00 AM", location: "Phoenix, AZ", done: true },
-      { title: "Delivered & Signed by Consignee (e-POD Ready)", time: "Oct 21, 2026 - 11:15 AM", location: "Los Angeles, CA", done: true, current: true },
+      { title: "Furniture Packed & Loaded with Bubble Wrap", time: "Oct 22, 2026 - 08:00 AM", location: "Lahore, Punjab", done: true },
+      { title: "Departed Lahore via M-2 Motorway", time: "Oct 22, 2026 - 09:30 AM", location: "Lahore, Punjab", done: true },
+      { title: "Passed Salt Range Kallar Kahar Crossing", time: "Oct 22, 2026 - 01:15 PM", location: "Kallar Kahar, Punjab", done: true },
+      { title: "Delivered, Unloaded & Reassembled at Doorstep", time: "Oct 22, 2026 - 05:45 PM", location: "Islamabad, ICT", done: true, current: true },
     ]
   }
 };
@@ -123,30 +123,30 @@ export default function Tracking() {
         bolNumber: `BOL-${trimmed}`,
         status: "In Transit",
         statusBadge: "Active Highway Dispatch",
-        service: "Standard 53ft Road Freight",
+        service: "Goods Transport - 15ft Mazda Truck",
         origin: {
-          facility: "Subhan Carriers Logistics Terminal Hub",
-          city: "Chicago, IL",
+          facility: "Subhan Carriers Central Goods Terminal",
+          city: "Faisalabad, Punjab",
           date: "Yesterday - 08:00 AM",
           completed: true
         },
         destination: {
-          facility: "Commercial Logistics Receiving Bay",
-          city: "Dallas, TX",
-          eta: "Tomorrow - 02:00 PM",
+          facility: "Commercial Receiving Goods Terminal",
+          city: "Rawalpindi / Islamabad",
+          eta: "Today - 04:00 PM",
           completed: false
         },
-        currentLocation: "Interstate Corridor (Active Satellite Telemetry)",
-        speed: "62 MPH",
-        temperature: "Ambient (+68°F)",
-        driverTeam: "Subhan Certified Highway Operator",
-        equipment: "Freightliner Cascadia Tractor / 53ft Trailer",
-        cargoDescription: "Commercial Palletized Freight - Fully Bonded",
+        currentLocation: "M-2 Motorway Corridor (Active Telemetry)",
+        speed: "75 KM/H",
+        temperature: "Covered Cargo Protection",
+        driverTeam: "Subhan Certified Driver",
+        equipment: "15ft Mazda Goods Transport Truck",
+        cargoDescription: "Commercial Goods Consignment - Handled with Care",
         steps: [
-          { title: "Pickup Confirmed & Manifest Generated", time: "Yesterday - 08:00 AM", location: "Chicago, IL", done: true },
-          { title: "Departed Origin Regional Depot", time: "Yesterday - 09:30 AM", location: "Chicago, IL", done: true },
-          { title: "Highway In-Transit Tracking Verified", time: "Today - 11:45 AM", location: "Interstate Highway", done: true, current: true },
-          { title: "Destination Terminal Arrival & Offload", time: "Tomorrow - 02:00 PM (Projected)", location: "Dallas, TX", done: false },
+          { title: "Goods Loaded & Verified at Terminal", time: "Yesterday - 08:00 AM", location: "Faisalabad, Punjab", done: true },
+          { title: "Departed Origin Regional Terminal", time: "Yesterday - 09:30 AM", location: "Faisalabad, Punjab", done: true },
+          { title: "Motorway In-Transit Checkpoint Verified", time: "Today - 11:45 AM", location: "M-2 Motorway", done: true, current: true },
+          { title: "Destination Terminal Arrival & Doorstep Delivery", time: "Today - 04:00 PM (Projected)", location: "Islamabad / Rawalpindi", done: false },
         ]
       });
     }
@@ -374,7 +374,7 @@ export default function Tracking() {
               <div className="flex flex-wrap items-center gap-4 text-xs text-slate-500 dark:text-slate-400 pt-3 border-t border-slate-100 dark:border-slate-800">
                 <span className="flex items-center gap-1.5">
                   <ShieldCheck className="w-4 h-4 text-highlight" />
-                  <span>Bonded Motor Carrier Liability: $5,000,000</span>
+                  <span>CPEC Registered Cargo Transit Guarantee — Full Consignment Protected</span>
                 </span>
                 <span className="flex items-center gap-1.5">
                   <FileText className="w-4 h-4 text-secondary" />

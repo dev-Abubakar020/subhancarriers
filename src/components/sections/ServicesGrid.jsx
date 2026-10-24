@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  Truck, 
-  Warehouse, 
-  Zap, 
-  ShieldAlert, 
-  ArrowRight, 
-  CheckCircle2, 
-  Clock 
+import {
+  Truck,
+  Warehouse,
+  Zap,
+  ShieldAlert,
+  ArrowRight,
+  CheckCircle2,
+  Clock
 } from 'lucide-react';
 import { services } from '../../data/services';
 import Card from '../ui/Card';
@@ -22,11 +22,11 @@ const iconMap = {
   ShieldAlert: ShieldAlert,
 };
 
-export default function ServicesGrid({ 
-  limit, 
+export default function ServicesGrid({
+  limit,
   showHeader = true,
   title = "Comprehensive Freight & Supply Chain Services",
-  subtitle = "Engineered for maximum reliability, speed, and cost efficiency across North American commercial transit corridors."
+  subtitle = "Engineered for maximum reliability, speed, and cost efficiency across Pakistan's major cities and nationwide commercial transit corridors."
 }) {
   const displayServices = limit ? services.slice(0, limit) : services;
 
@@ -46,8 +46,8 @@ export default function ServicesGrid({
             const Icon = iconMap[service.iconName] || Truck;
 
             return (
-              <Card 
-                key={service.id} 
+              <Card
+                key={service.id}
                 className="flex flex-col h-full group transition-all duration-300"
               >
                 {/* Service Card Top Image / Banner */}
@@ -59,7 +59,7 @@ export default function ServicesGrid({
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-primary-900/80 via-primary-900/30 to-transparent" />
-                  
+
                   {/* Category Badge */}
                   <div className="absolute top-3 left-3">
                     <Badge variant="dark" className="text-[10px] py-0.5 px-2.5">
@@ -128,10 +128,10 @@ export default function ServicesGrid({
             Need a custom freight or logistics configuration tailored to your supply chain?
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
-            <Button to="/quote" variant="accent" size="md" icon={ArrowRight}>
+            {/* <Button to="/quote" variant="accent" size="md" icon={ArrowRight}>
               Request Customized Quote
-            </Button>
-            <Button to="/contact" variant="outline" size="md" className="dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800">
+            </Button> */}
+            <Button to="/contact" variant="accent" size="md" className="dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800">
               Speak with a Freight Specialist
             </Button>
           </div>

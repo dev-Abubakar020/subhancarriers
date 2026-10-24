@@ -1,23 +1,24 @@
 import React, { useState } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
-import { 
-  Calendar, 
-  Clock, 
-  ArrowLeft, 
-  ArrowRight, 
-  Share2, 
-  Linkedin, 
-  Twitter, 
-  Facebook, 
-  Copy, 
-  Check, 
-  Tag, 
+import {
+  Calendar,
+  Clock,
+  ArrowLeft,
+  ArrowRight,
+  Share2,
+  Linkedin,
+  Twitter,
+  Facebook,
+  Copy,
+  Check,
+  Tag,
   BookOpen,
   User,
   ShieldCheck
 } from 'lucide-react';
 import SEO from '../components/ui/SEO';
 import PageHeader from '../components/ui/PageHeader';
+import SectionHeading from '../components/ui/SectionHeading';
 import BlogCard from '../components/ui/BlogCard';
 import Button from '../components/ui/Button';
 import Badge from '../components/ui/Badge';
@@ -85,7 +86,7 @@ export default function BlogPost() {
       if (currentParagraph.length > 0) {
         const text = currentParagraph.join(' ');
         elements.push(
-          <p key={key} className="text-base sm:text-lg text-slate-700 leading-relaxed my-5">
+          <p key={key} className="text-base sm:text-lg text-slate-700 dark:text-slate-300 leading-relaxed my-5 transition-colors">
             {parseInline(text)}
           </p>
         );
@@ -107,13 +108,13 @@ export default function BlogPost() {
         if (match[1] && match[2]) {
           // Link
           parts.push(
-            <Link key={match.index} to={match[2]} className="text-secondary font-bold hover:underline hover:text-secondary-700">
+            <Link key={match.index} to={match[2]} className="text-secondary dark:text-secondary-400 font-bold hover:underline hover:text-secondary-700 dark:hover:text-secondary-300">
               {match[1]}
             </Link>
           );
         } else if (match[3]) {
           // Bold
-          parts.push(<strong key={match.index} className="font-bold text-heading">{match[3]}</strong>);
+          parts.push(<strong key={match.index} className="font-bold text-heading dark:text-white">{match[3]}</strong>);
         }
         lastIndex = regex.lastIndex;
       }
@@ -129,31 +130,31 @@ export default function BlogPost() {
       if (trimmed.startsWith('## ')) {
         flushParagraph(`p-${idx}`);
         elements.push(
-          <h2 key={`h2-${idx}`} className="text-2xl sm:text-3xl font-bold font-heading text-heading mt-12 mb-4 pt-4 border-t border-slate-100">
+          <h2 key={`h2-${idx}`} className="text-2xl sm:text-3xl font-bold font-heading text-heading dark:text-white mt-12 mb-4 pt-4 border-t border-slate-100 dark:border-slate-800 transition-colors">
             {trimmed.replace('## ', '')}
           </h2>
         );
       } else if (trimmed.startsWith('### ')) {
         flushParagraph(`p-${idx}`);
         elements.push(
-          <h3 key={`h3-${idx}`} className="text-xl sm:text-2xl font-bold font-heading text-heading mt-8 mb-3">
+          <h3 key={`h3-${idx}`} className="text-xl sm:text-2xl font-bold font-heading text-heading dark:text-white mt-8 mb-3 transition-colors">
             {trimmed.replace('### ', '')}
           </h3>
         );
       } else if (trimmed.startsWith('---')) {
         flushParagraph(`p-${idx}`);
-        elements.push(<hr key={`hr-${idx}`} className="my-8 border-slate-200" />);
+        elements.push(<hr key={`hr-${idx}`} className="my-8 border-slate-200 dark:border-slate-800" />);
       } else if (trimmed.startsWith('- ') || trimmed.startsWith('* ')) {
         flushParagraph(`p-${idx}`);
         elements.push(
-          <li key={`li-${idx}`} className="ml-6 list-disc text-base sm:text-lg text-slate-700 my-2 leading-relaxed">
+          <li key={`li-${idx}`} className="ml-6 list-disc text-base sm:text-lg text-slate-700 dark:text-slate-300 my-2 leading-relaxed">
             {parseInline(trimmed.substring(2))}
           </li>
         );
       } else if (trimmed.startsWith('1. ') || trimmed.startsWith('2. ') || trimmed.startsWith('3. ') || trimmed.startsWith('4. ')) {
         flushParagraph(`p-${idx}`);
         elements.push(
-          <div key={`num-${idx}`} className="ml-2 font-medium text-base sm:text-lg text-slate-700 my-2 leading-relaxed">
+          <div key={`num-${idx}`} className="ml-2 font-medium text-base sm:text-lg text-slate-700 dark:text-slate-300 my-2 leading-relaxed">
             {parseInline(trimmed)}
           </div>
         );
@@ -208,11 +209,11 @@ export default function BlogPost() {
       </PageHeader>
 
       {/* Main Post Article Body */}
-      <article className="py-16 md:py-24 bg-white">
+      <article className="py-16 md:py-24 bg-white dark:bg-slate-900 transition-colors duration-300">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           {/* Cover Image banner */}
-          <div className="rounded-3xl overflow-hidden shadow-soft-lg mb-12">
+          <div className="rounded-3xl overflow-hidden shadow-soft-lg mb-12 border border-slate-100 dark:border-slate-800">
             <img
               src={post.coverImage}
               alt={post.title}
@@ -221,31 +222,31 @@ export default function BlogPost() {
           </div>
 
           {/* Social Share Bar & Tags */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 py-4 mb-8 border-y border-slate-100">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 py-4 mb-8 border-y border-slate-100 dark:border-slate-800 transition-colors">
             <div className="flex items-center gap-2 flex-wrap">
-              <span className="text-xs font-bold text-slate-400 uppercase">Tags:</span>
+              <span className="text-xs font-bold text-slate-400 dark:text-slate-400 uppercase">Tags:</span>
               {post.tags.map((tag, tIdx) => (
-                <span key={tIdx} className="text-xs font-medium text-slate-600 bg-slate-100 px-2.5 py-1 rounded-md">
+                <span key={tIdx} className="text-xs font-medium text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 border border-transparent dark:border-slate-700/60 px-2.5 py-1 rounded-md">
                   #{tag}
                 </span>
               ))}
             </div>
 
             <div className="flex items-center gap-2">
-              <span className="text-xs font-bold text-slate-400 uppercase mr-1">Share:</span>
+              <span className="text-xs font-bold text-slate-400 dark:text-slate-400 uppercase mr-1">Share:</span>
               <button
                 onClick={handleCopyLink}
                 aria-label="Copy link to clipboard"
-                className="p-2 rounded-lg bg-surface-light hover:bg-slate-200 text-slate-600 transition-colors"
+                className="p-2 rounded-lg bg-surface-light dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 transition-colors border border-transparent dark:border-slate-700/50"
               >
-                {copied ? <Check className="w-4 h-4 text-emerald-600" /> : <Copy className="w-4 h-4" />}
+                {copied ? <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400" /> : <Copy className="w-4 h-4" />}
               </button>
               <a
                 href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`}
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Share on LinkedIn"
-                className="p-2 rounded-lg bg-surface-light hover:bg-secondary hover:text-white text-slate-600 transition-colors"
+                className="p-2 rounded-lg bg-surface-light dark:bg-slate-800 hover:bg-secondary hover:text-white dark:hover:bg-secondary text-slate-600 dark:text-slate-300 transition-colors border border-transparent dark:border-slate-700/50"
               >
                 <Linkedin className="w-4 h-4" />
               </a>
@@ -254,7 +255,7 @@ export default function BlogPost() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Share on Twitter"
-                className="p-2 rounded-lg bg-surface-light hover:bg-secondary hover:text-white text-slate-600 transition-colors"
+                className="p-2 rounded-lg bg-surface-light dark:bg-slate-800 hover:bg-secondary hover:text-white dark:hover:bg-secondary text-slate-600 dark:text-slate-300 transition-colors border border-transparent dark:border-slate-700/50"
               >
                 <Twitter className="w-4 h-4" />
               </a>
@@ -263,7 +264,7 @@ export default function BlogPost() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Share on Facebook"
-                className="p-2 rounded-lg bg-surface-light hover:bg-secondary hover:text-white text-slate-600 transition-colors"
+                className="p-2 rounded-lg bg-surface-light dark:bg-slate-800 hover:bg-secondary hover:text-white dark:hover:bg-secondary text-slate-600 dark:text-slate-300 transition-colors border border-transparent dark:border-slate-700/50"
               >
                 <Facebook className="w-4 h-4" />
               </a>
@@ -271,7 +272,7 @@ export default function BlogPost() {
           </div>
 
           {/* Rendered Post Content */}
-          <div className="prose prose-slate max-w-none text-body">
+          <div className="prose prose-slate dark:prose-invert max-w-none text-body dark:text-slate-300">
             {renderFormattedContent(post.content)}
           </div>
 
@@ -289,7 +290,7 @@ export default function BlogPost() {
               </p>
             </div>
             <Button
-              to="/quote"
+              to="/contact"
               variant="accent"
               size="md"
               icon={ArrowRight}
@@ -300,21 +301,21 @@ export default function BlogPost() {
           </div>
 
           {/* Author Box */}
-          <div className="mt-12 p-6 rounded-2xl bg-surface-light border border-slate-200/60 flex items-center gap-4">
+          <div className="mt-12 p-6 rounded-2xl bg-surface-light dark:bg-slate-800/70 border border-slate-200/60 dark:border-slate-700/60 flex items-center gap-4 transition-colors">
             <img
               src={post.author.avatar}
               alt={post.author.name}
               className="w-16 h-16 rounded-full object-cover border-2 border-secondary shrink-0"
             />
             <div>
-              <h4 className="font-heading font-bold text-base text-heading">
+              <h4 className="font-heading font-bold text-base text-heading dark:text-white">
                 About the Author: {post.author.name}
               </h4>
-              <p className="text-xs text-secondary font-semibold mb-1">
+              <p className="text-xs text-secondary dark:text-secondary-400 font-semibold mb-1">
                 {post.author.role} at Subhan Carriers
               </p>
-              <p className="text-xs text-body leading-relaxed">
-                Specializing in North American interstate freight movement, continuous GPS telematics, and enterprise logistics efficiency.
+              <p className="text-xs text-body dark:text-slate-300 leading-relaxed">
+                Specializing in Pakistan's goods transport and logistics industry, with a focus on safe, reliable, and cost-effective moving and freight services across all major cities.
               </p>
             </div>
           </div>
@@ -323,7 +324,7 @@ export default function BlogPost() {
           <div className="mt-8 text-center">
             <Link
               to="/blog"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-secondary hover:text-secondary-700"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-secondary hover:text-secondary-700 dark:text-secondary-400 dark:hover:text-secondary-300 transition-colors"
             >
               <ArrowLeft className="w-4 h-4" />
               <span>Back to All Articles</span>
@@ -334,7 +335,7 @@ export default function BlogPost() {
       </article>
 
       {/* Related Articles Section */}
-      <section className="py-16 md:py-24 bg-surface-light border-t border-slate-200/60">
+      <section className="py-16 md:py-24 bg-surface-light dark:bg-slate-950/70 border-t border-slate-200/60 dark:border-slate-800/80 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
             badge="Recommended Reading"

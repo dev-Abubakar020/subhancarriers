@@ -61,10 +61,10 @@ export default function Blog() {
       />
 
       {/* Filter and Search Bar Section */}
-      <section className="py-10 bg-white border-b border-slate-100">
+      <section className="py-10 bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            
+
             {/* Category Pills */}
             <div className="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0">
               {categories.map((cat) => (
@@ -74,7 +74,7 @@ export default function Blog() {
                   className={`px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-colors ${
                     selectedCategory === cat
                       ? 'bg-primary text-white shadow-soft'
-                      : 'bg-surface-light text-slate-600 hover:bg-slate-200'
+                      : 'bg-surface-light dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
                   }`}
                 >
                   {cat}
@@ -91,7 +91,7 @@ export default function Blog() {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search freight articles..."
                 aria-label="Search freight articles"
-                className="w-full pl-10 pr-4 py-2.5 bg-surface-light border border-slate-200 rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary transition-all"
+                className="w-full pl-10 pr-4 py-2.5 bg-surface-light dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs sm:text-sm text-heading dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary transition-all"
               />
             </div>
 
@@ -100,13 +100,13 @@ export default function Blog() {
       </section>
 
       {/* Main Blog Content Area */}
-      <section className="py-16 md:py-24 bg-surface-light">
+      <section className="py-16 md:py-24 bg-surface-light dark:bg-slate-950 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           {/* Featured Article (When viewing All and no search) */}
           {selectedCategory === 'All' && !searchQuery && featuredPost && (
             <div className="mb-16">
-              <div className="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-soft group hover:shadow-soft-lg transition-all duration-300">
+              <div className="bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border border-slate-100 dark:border-slate-800 shadow-soft group hover:shadow-soft-lg transition-all duration-300">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
                   <div className="lg:col-span-7 relative h-72 sm:h-96 lg:h-auto overflow-hidden">
                     <img
@@ -133,26 +133,26 @@ export default function Blog() {
                         </div>
                       </div>
 
-                      <h2 className="text-2xl sm:text-3xl font-bold font-heading text-heading mb-4 group-hover:text-secondary transition-colors leading-tight">
+                      <h2 className="text-2xl sm:text-3xl font-bold font-heading text-heading dark:text-white mb-4 group-hover:text-secondary transition-colors leading-tight">
                         <Link to={`/blog/${featuredPost.slug}`}>
                           {featuredPost.title}
                         </Link>
                       </h2>
 
-                      <p className="text-sm text-body leading-relaxed mb-6 line-clamp-4">
+                      <p className="text-sm text-body dark:text-slate-400 leading-relaxed mb-6 line-clamp-4">
                         {featuredPost.excerpt}
                       </p>
                     </div>
 
-                    <div className="pt-6 border-t border-slate-100 flex items-center justify-between">
+                    <div className="pt-6 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
                       <div className="flex items-center gap-3">
                         <img
                           src={featuredPost.author.avatar}
                           alt={featuredPost.author.name}
-                          className="w-10 h-10 rounded-full object-cover border border-slate-200"
+                          className="w-10 h-10 rounded-full object-cover border border-slate-200 dark:border-slate-700"
                         />
                         <div>
-                          <div className="text-xs font-bold text-heading">
+                          <div className="text-xs font-bold text-heading dark:text-white">
                             {featuredPost.author.name}
                           </div>
                           <div className="text-[11px] text-slate-400">
@@ -184,12 +184,12 @@ export default function Blog() {
               ))}
             </div>
           ) : (
-            <div className="text-center py-16 bg-white rounded-3xl border border-slate-100 p-8 max-w-md mx-auto">
-              <BookOpen className="w-12 h-12 text-slate-300 mx-auto mb-3" />
-              <h3 className="text-lg font-bold font-heading text-heading mb-1">
+            <div className="text-center py-16 bg-white dark:bg-slate-900 rounded-3xl border border-slate-100 dark:border-slate-800 p-8 max-w-md mx-auto">
+              <BookOpen className="w-12 h-12 text-slate-300 dark:text-slate-600 mx-auto mb-3" />
+              <h3 className="text-lg font-bold font-heading text-heading dark:text-white mb-1">
                 No matching articles found
               </h3>
-              <p className="text-xs text-body mb-4">
+              <p className="text-xs text-body dark:text-slate-400 mb-4">
                 We couldn't find any articles matching "{searchQuery}". Try a different search term or category.
               </p>
               <button

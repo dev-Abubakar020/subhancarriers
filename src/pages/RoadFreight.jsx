@@ -1,11 +1,11 @@
 import React from 'react';
-import { 
-  Truck, 
-  ShieldCheck, 
-  Clock, 
-  MapPin, 
-  CheckCircle2, 
-  Thermometer, 
+import {
+  Truck,
+  ShieldCheck,
+  Clock,
+  MapPin,
+  CheckCircle2,
+  Thermometer,
   ArrowRight,
   FileCheck2,
   Phone
@@ -41,8 +41,8 @@ export default function RoadFreight() {
   return (
     <>
       <SEO
-        title="Road Freight Transport - Nationwide FTL & LTL Truckload Logistics"
-        description="Subhan Carriers delivers dependable FTL & LTL road freight across all 48 states with modern 53ft dry vans, IoT refrigerated trailers, and real-time GPS tracking."
+        title="Goods Transport & Road Freight - Subhan Carriers Pakistan"
+        description="Subhan Carriers delivers dependable goods transport across Lahore, Karachi, Islamabad, Faisalabad, and all over Pakistan with CPEC registered trucks and zero hidden fees."
         canonical="/services/road-freight"
         schemaJson={breadcrumbSchema}
       />
@@ -53,41 +53,41 @@ export default function RoadFreight() {
         subtitle={service.tagline}
         breadcrumbs={breadcrumbs}
       >
-        <Button to="/quote?service=road-freight" variant="accent" size="md" icon={ArrowRight}>
-          Book Road Freight
+        <Button to="/contact" variant="accent" size="md" icon={ArrowRight}>
+          Book Goods Transport
         </Button>
-        <Button to="/tracking" variant="outlineWhite" size="md">
+        {/* <Button to="/tracking" variant="outlineWhite" size="md">
           Track Active Truck
-        </Button>
+        </Button> */}
       </PageHeader>
 
       {/* Main Content & Specs Grid */}
-      <section className="py-20 md:py-28 bg-white">
+      <section className="py-20 md:py-28 bg-white dark:bg-slate-900 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20">
-            
+
             {/* Left Narrative */}
             <div className="lg:col-span-7 space-y-6">
-              <span className="text-xs font-bold uppercase tracking-wider text-secondary px-3 py-1 rounded-full bg-secondary/10 border border-secondary/20 inline-block">
-                Precision Highway Haulage
+              <span className="text-xs font-bold uppercase tracking-wider text-secondary dark:text-secondary-400 px-3 py-1 rounded-full bg-secondary/10 border border-secondary/20 inline-block">
+                Inter-City Highway Goods Transport
               </span>
 
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold font-heading text-heading leading-tight">
-                Traversing 48 States with 99.4% On-Time Precision
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold font-heading text-heading dark:text-white leading-tight">
+                Pakistan's Best Transportation Services & Goods Moving Partner
               </h2>
 
-              <p className="text-base text-body leading-relaxed">
-                Whether you are transporting full truckloads (FTL) between regional distribution hubs or seeking flexible less-than-truckload (LTL) consolidation, Subhan Carriers provides reliable, scheduled transportation backed by over 350 company-owned late-model tractors and trailers.
+              <p className="text-base text-body dark:text-slate-300 leading-relaxed">
+                Subhan Carriers is the leading goods Transport Company with the best and most reliable transportation systems and shipping services in Pakistan. Our company is registered in all Central Asia Transportation License and also from CPEC (China-Pakistan Economic Corridor). Subhan Carriers Goods Transport Company is growing its customers' trust upon us, and we do not charge any hidden fee for your moving.
               </p>
 
-              <p className="text-base text-body leading-relaxed">
-                Our fleet is outfitted with active collision avoidance systems, aerodynamic SmartWay trailers, and continuous 60-second telematics. We offer both standard dry freight and multi-zone temperature-controlled reefer units capable of maintaining exact thermal ranges from -20°F to 70°F.
+              <p className="text-base text-body dark:text-slate-300 leading-relaxed">
+                Subhan Carriers has all the solutions with a wide range of vehicles fully equipped for well-maintained transportation. Our drivers are fully experienced and motivated in customer's belongings safety and maintain our fleet's excellent standard. Our goods transport vehicles are regularly serviced by professionals and strictly supported for the protection of clients' items.
               </p>
 
               {/* Key Features List */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
                 {service.keyFeatures.map((feat, idx) => (
-                  <div key={idx} className="flex items-start gap-2.5 text-sm text-slate-800">
+                  <div key={idx} className="flex items-start gap-2.5 text-sm text-slate-800 dark:text-slate-200">
                     <CheckCircle2 className="w-4 h-4 text-highlight shrink-0 mt-0.5" />
                     <span>{feat}</span>
                   </div>
@@ -97,7 +97,7 @@ export default function RoadFreight() {
 
             {/* Right Side Image & Floating Highlights */}
             <div className="lg:col-span-5 relative">
-              <div className="rounded-3xl overflow-hidden shadow-soft-lg border border-slate-100">
+              <div className="rounded-3xl overflow-hidden shadow-soft-lg border border-slate-100 dark:border-slate-800">
                 <img
                   src={service.heroImage}
                   alt="Road Freight Truck on Highway"
@@ -106,10 +106,10 @@ export default function RoadFreight() {
               </div>
 
               {/* Mini Highlights Card */}
-              <div className="mt-6 bg-surface-light rounded-2xl p-6 border border-slate-100 grid grid-cols-2 gap-4">
+              <div className="mt-6 bg-surface-light dark:bg-slate-800/60 rounded-2xl p-6 border border-slate-100 dark:border-slate-700/60 grid grid-cols-2 gap-4 transition-colors">
                 <div>
                   <div className="text-xs text-slate-400 uppercase font-semibold">Reliability SLA</div>
-                  <div className="text-lg font-bold text-secondary font-heading">{service.sla}</div>
+                  <div className="text-lg font-bold text-secondary dark:text-secondary-400 font-heading">{service.sla}</div>
                 </div>
                 <div>
                   <div className="text-xs text-slate-400 uppercase font-semibold">Max Payload</div>
@@ -125,16 +125,16 @@ export default function RoadFreight() {
             <SectionHeading
               badge="Fleet Standards"
               title="Equipment Specifications & Operational Parameters"
-              subtitle="Every trailer adheres to strict DOT, FSMA, and insurance standards to protect your commercial cargo."
+              subtitle="Every truck adheres to strict fitness, motorway safety, and cargo protection standards."
             />
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {service.specifications.map((spec, sIdx) => (
-                <Card key={sIdx} className="p-6 bg-surface-light/50 border border-slate-100">
+                <Card key={sIdx} className="p-6 bg-surface-light/50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-700/60">
                   <div className="text-xs font-semibold uppercase text-slate-400 mb-1">
                     {spec.label}
                   </div>
-                  <div className="text-base font-bold font-heading text-heading">
+                  <div className="text-base font-bold font-heading text-heading dark:text-white">
                     {spec.value}
                   </div>
                 </Card>
@@ -148,7 +148,7 @@ export default function RoadFreight() {
               Industries & Cargo Profiles We Regularly Service
             </h3>
             <p className="text-slate-300 text-sm max-w-2xl mb-8 leading-relaxed">
-              Our road freight operations accommodate diverse industrial cargo, packaged retail, food grade dry goods, and regulated materials.
+              Our road freight operations accommodate diverse industrial cargo, packaged retail, food grade dry goods, and regulated materials across Pakistan.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -166,16 +166,16 @@ export default function RoadFreight() {
             <SectionHeading
               badge="FAQ"
               title="Road Freight Questions & Answers"
-              subtitle="Common inquiries regarding our full truckload and consolidation operations."
+              subtitle="Common inquiries regarding our full truckload and shifting operations across Pakistan."
             />
 
             <div className="max-w-3xl mx-auto space-y-4">
               {service.faqs.map((faq, fIdx) => (
-                <div key={fIdx} className="p-6 rounded-2xl bg-surface-light border border-slate-100">
-                  <h4 className="font-heading font-bold text-base text-heading mb-2">
+                <div key={fIdx} className="p-6 rounded-2xl bg-surface-light dark:bg-slate-800/60 border border-slate-100 dark:border-slate-700/60 transition-colors">
+                  <h4 className="font-heading font-bold text-base text-heading dark:text-white mb-2">
                     {faq.q}
                   </h4>
-                  <p className="text-sm text-body leading-relaxed">
+                  <p className="text-sm text-body dark:text-slate-300 leading-relaxed">
                     {faq.a}
                   </p>
                 </div>

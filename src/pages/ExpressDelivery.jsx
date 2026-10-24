@@ -1,12 +1,12 @@
 import React from 'react';
-import { 
-  Zap, 
-  Clock, 
-  ShieldCheck, 
-  CheckCircle2, 
-  ArrowRight, 
-  PhoneCall, 
-  Truck, 
+import {
+  Zap,
+  Clock,
+  ShieldCheck,
+  CheckCircle2,
+  ArrowRight,
+  PhoneCall,
+  Truck,
   Flame,
   AlertTriangle
 } from 'lucide-react';
@@ -41,8 +41,8 @@ export default function ExpressDelivery() {
   return (
     <>
       <SEO
-        title="Express & Expedited Freight Delivery - Guaranteed Same-Day & Next-Day"
-        description="Subhan Carriers provides dedicated hot-shot transport, non-stop team drivers, and guaranteed next-day expedited freight delivery nationwide."
+        title="Express Same-Day Delivery - Subhan Carriers Pakistan"
+        description="Subhan Carriers provides fast same-day delivery and express goods transport for adjoining cities across Pakistan with dedicated Shehzore and Mazda trucks."
         canonical="/services/express-delivery"
         schemaJson={breadcrumbSchema}
       />
@@ -53,34 +53,34 @@ export default function ExpressDelivery() {
         subtitle={service.tagline}
         breadcrumbs={breadcrumbs}
       >
-        <Button to="/quote?service=express-delivery" variant="accent" size="md" icon={ArrowRight}>
-          Book Priority Expedited
+        <Button to="/contact" variant="accent" size="md" icon={ArrowRight}>
+          Book Express Dispatch
         </Button>
         <a
           href={`tel:${siteConfig.contact.phonePrimary.replace(/[^\d+]/g, '')}`}
           className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-sm border border-white/20 transition-all"
         >
           <PhoneCall className="w-4 h-4 text-accent" />
-          <span>Call 24/7 Priority Desk</span>
+          <span>Call 24/7 Priority Helpline</span>
         </a>
       </PageHeader>
 
       {/* Main Content */}
-      <section className="py-20 md:py-28 bg-white">
+      <section className="py-20 md:py-28 bg-white dark:bg-slate-900 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           {/* Emergency Alert Banner */}
-          <div className="mb-16 bg-gradient-to-r from-accent-50 via-white to-amber-50 border border-accent/30 rounded-3xl p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-soft">
+          <div className="mb-16 bg-gradient-to-r from-accent-50 via-white to-amber-50 dark:from-slate-850 dark:via-slate-800 dark:to-slate-850 border border-accent/30 dark:border-accent/40 rounded-3xl p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-soft transition-colors">
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 rounded-2xl bg-accent text-white flex items-center justify-center shrink-0 shadow-glow-accent">
                 <Flame className="w-6 h-6 animate-pulse" />
               </div>
               <div>
-                <h3 className="font-heading font-bold text-lg text-heading">
-                  Automotive Line-Down or Aircraft On Ground (AOG)?
+                <h3 className="font-heading font-bold text-lg text-heading dark:text-white">
+                  Urgent Goods Transport or Same-Day Moving Needed?
                 </h3>
-                <p className="text-xs sm:text-sm text-body mt-0.5">
-                  Our emergency hot-shot dispatch team can mobilize a dedicated tractor or expedited sprinter within 45 minutes.
+                <p className="text-xs sm:text-sm text-body dark:text-slate-300 mt-0.5">
+                  Our fast-dispatch team can mobilize a dedicated Shehzore or Mazda truck within 45 minutes for urgent point-to-point transit.
                 </p>
               </div>
             </div>
@@ -88,31 +88,31 @@ export default function ExpressDelivery() {
               href={`tel:${siteConfig.contact.phonePrimary.replace(/[^\d+]/g, '')}`}
               className="px-6 py-3 rounded-xl bg-primary text-white hover:bg-primary-700 font-semibold text-sm whitespace-nowrap transition-colors"
             >
-              Emergency Hotline: {siteConfig.contact.phonePrimary}
+              Priority Helpline: {siteConfig.contact.phonePrimary}
             </a>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20">
             <div className="lg:col-span-7 space-y-6">
-              <span className="text-xs font-bold uppercase tracking-wider text-secondary px-3 py-1 rounded-full bg-secondary/10 border border-secondary/20 inline-block">
-                Time-Critical Ground Transit
+              <span className="text-xs font-bold uppercase tracking-wider text-secondary dark:text-secondary-400 px-3 py-1 rounded-full bg-secondary/10 border border-secondary/20 inline-block">
+                Same-Day Pick-up & Transit
               </span>
 
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold font-heading text-heading leading-tight">
-                When Delivery Delays Threaten Factory Operations or Contractual SLAs
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold font-heading text-heading dark:text-white leading-tight">
+                Fast Delivery Service Provider with Same-Day Pick-up in Pakistan
               </h2>
 
-              <p className="text-base text-body leading-relaxed">
-                Subhan Carriers' expedited freight division eliminates cross-dock transfers and transit delays. We deploy dedicated vehicles directly from your pickup dock to the final recipient without intermediary terminal stops.
+              <p className="text-base text-body dark:text-slate-300 leading-relaxed">
+                Subhan Carriers offers all types of goods transport services with same-day delivery for adjoining cities. We also provide same-day pick-up so that you receive the highest level of convenience.
               </p>
 
-              <p className="text-base text-body leading-relaxed">
-                For long-haul lanes exceeding 600 miles, we staff tractors with certified two-driver teams who alternate driving shifts to keep wheels turning non-stop in strict compliance with DOT Hours of Service (HOS) rules, cutting standard transit times in half.
+              <p className="text-base text-body dark:text-slate-300 leading-relaxed">
+                There are many transportation companies, but they often seem to not care about the client's precious items, and their drivers have no experience. The results cause a loss of valuable items. At Subhan Carriers, our experienced drivers ensure 100% safe, well-maintained, and punctual delivery.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
                 {service.keyFeatures.map((feat, idx) => (
-                  <div key={idx} className="flex items-start gap-2.5 text-sm text-slate-800">
+                  <div key={idx} className="flex items-start gap-2.5 text-sm text-slate-800 dark:text-slate-200">
                     <CheckCircle2 className="w-4 h-4 text-highlight shrink-0 mt-0.5" />
                     <span>{feat}</span>
                   </div>
@@ -121,7 +121,7 @@ export default function ExpressDelivery() {
             </div>
 
             <div className="lg:col-span-5 relative">
-              <div className="rounded-3xl overflow-hidden shadow-soft-lg border border-slate-100">
+              <div className="rounded-3xl overflow-hidden shadow-soft-lg border border-slate-100 dark:border-slate-800">
                 <img
                   src={service.heroImage}
                   alt="Expedited Delivery Truck"
@@ -129,10 +129,10 @@ export default function ExpressDelivery() {
                 />
               </div>
 
-              <div className="mt-6 bg-surface-light rounded-2xl p-6 border border-slate-100 grid grid-cols-2 gap-4">
+              <div className="mt-6 bg-surface-light dark:bg-slate-800/60 rounded-2xl p-6 border border-slate-100 dark:border-slate-700/60 grid grid-cols-2 gap-4 transition-colors">
                 <div>
                   <div className="text-xs text-slate-400 uppercase font-semibold">Expedited SLA</div>
-                  <div className="text-lg font-bold text-secondary font-heading">{service.sla}</div>
+                  <div className="text-lg font-bold text-secondary dark:text-secondary-400 font-heading">{service.sla}</div>
                 </div>
                 <div>
                   <div className="text-xs text-slate-400 uppercase font-semibold">Dispatch Speed</div>
@@ -148,7 +148,7 @@ export default function ExpressDelivery() {
               Critical Industries That Rely on Our Express Service
             </h3>
             <p className="text-slate-300 text-sm max-w-2xl mb-8 leading-relaxed">
-              When production downtime costs thousands of dollars per hour, organizations trust Subhan Carriers' expedited non-stop dispatch.
+              When production downtime or delivery delays threaten business commitments, organizations trust Subhan Carriers' expedited non-stop dispatch across Pakistan.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -171,11 +171,11 @@ export default function ExpressDelivery() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {service.specifications.map((spec, sIdx) => (
-                <Card key={sIdx} className="p-6 bg-surface-light/50 border border-slate-100">
+                <Card key={sIdx} className="p-6 bg-surface-light/50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-700/60">
                   <div className="text-xs font-semibold uppercase text-slate-400 mb-1">
                     {spec.label}
                   </div>
-                  <div className="text-base font-bold font-heading text-heading">
+                  <div className="text-base font-bold font-heading text-heading dark:text-white">
                     {spec.value}
                   </div>
                 </Card>
@@ -188,16 +188,16 @@ export default function ExpressDelivery() {
             <SectionHeading
               badge="FAQ"
               title="Express Delivery Questions & Answers"
-              subtitle="Learn about team driver logistics, speed guarantees, and dispatch requirements."
+              subtitle="Learn about driver logistics, speed guarantees, and dispatch requirements."
             />
 
             <div className="max-w-3xl mx-auto space-y-4">
               {service.faqs.map((faq, fIdx) => (
-                <div key={fIdx} className="p-6 rounded-2xl bg-surface-light border border-slate-100">
-                  <h4 className="font-heading font-bold text-base text-heading mb-2">
+                <div key={fIdx} className="p-6 rounded-2xl bg-surface-light dark:bg-slate-800/60 border border-slate-100 dark:border-slate-700/60 transition-colors">
+                  <h4 className="font-heading font-bold text-base text-heading dark:text-white mb-2">
                     {faq.q}
                   </h4>
-                  <p className="text-sm text-body leading-relaxed">
+                  <p className="text-sm text-body dark:text-slate-300 leading-relaxed">
                     {faq.a}
                   </p>
                 </div>

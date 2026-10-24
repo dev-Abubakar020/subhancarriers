@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  Truck, 
-  Phone, 
-  Mail, 
-  MapPin, 
-  ArrowRight, 
-  ShieldCheck, 
-  Clock, 
-  CheckCircle2, 
-  Linkedin, 
-  Facebook, 
-  Twitter, 
+import {
+  Truck,
+  Phone,
+  Mail,
+  MapPin,
+  ArrowRight,
+  ShieldCheck,
+  Clock,
+  CheckCircle2,
+  Linkedin,
+  Facebook,
+  Twitter,
   Youtube,
   Send
 } from 'lucide-react';
@@ -55,57 +55,66 @@ export default function Footer() {
             </Link>
 
             <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
-              Providing dependable freight transportation, temperature-controlled transit, modern warehousing, and heavy haul engineering across nationwide corridors with real-time GPS tracking.
+              SUBHAN CARRIERS is Pakistan's premier packing and goods transport company, providing safe, reliable, and cost-efficient moving services across Lahore, Karachi, Islamabad, Faisalabad, and all over Pakistan.
             </p>
 
             <div className="space-y-2 pt-1 text-xs text-slate-400">
               <div className="flex items-center gap-2">
                 <ShieldCheck className="w-4 h-4 text-highlight shrink-0" />
-                <span>DOT Certified & Bonded Carrier #489210</span>
+                <span>CPEC & Central Asia Transportation Registered</span>
               </div>
               <div className="flex items-center gap-2">
                 <Clock className="w-4 h-4 text-accent shrink-0" />
-                <span>24/7 National Dispatch & Emergency Routing</span>
+                <span>24/7 Booking Helpline & WhatsApp Support</span>
               </div>
             </div>
 
             {/* Social Icons */}
             <div className="flex items-center gap-3 pt-2">
-              <a 
-                href={siteConfig.socials.linkedin} 
-                target="_blank" 
-                rel="noreferrer" 
-                aria-label="LinkedIn"
-                className="w-9 h-9 rounded-lg bg-white/5 hover:bg-secondary hover:text-white flex items-center justify-center text-slate-400 transition-colors"
+              <a
+                href={siteConfig.socials.whatsapp}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="WhatsApp"
+                className="w-9 h-9 rounded-lg bg-emerald-600/30 hover:bg-emerald-600 text-emerald-400 hover:text-white flex items-center justify-center transition-colors"
               >
-                <Linkedin className="w-4 h-4" />
+                <Phone className="w-4 h-4" />
               </a>
-              <a 
-                href={siteConfig.socials.twitter} 
-                target="_blank" 
-                rel="noreferrer" 
-                aria-label="Twitter"
-                className="w-9 h-9 rounded-lg bg-white/5 hover:bg-secondary hover:text-white flex items-center justify-center text-slate-400 transition-colors"
-              >
-                <Twitter className="w-4 h-4" />
-              </a>
-              <a 
-                href={siteConfig.socials.facebook} 
-                target="_blank" 
-                rel="noreferrer" 
+              <a
+                href={siteConfig.socials.facebook}
+                target="_blank"
+                rel="noreferrer"
                 aria-label="Facebook"
                 className="w-9 h-9 rounded-lg bg-white/5 hover:bg-secondary hover:text-white flex items-center justify-center text-slate-400 transition-colors"
               >
                 <Facebook className="w-4 h-4" />
               </a>
-              <a 
-                href={siteConfig.socials.youtube} 
-                target="_blank" 
-                rel="noreferrer" 
+              <a
+                href={siteConfig.socials.youtube}
+                target="_blank"
+                rel="noreferrer"
                 aria-label="YouTube"
                 className="w-9 h-9 rounded-lg bg-white/5 hover:bg-secondary hover:text-white flex items-center justify-center text-slate-400 transition-colors"
               >
                 <Youtube className="w-4 h-4" />
+              </a>
+              <a
+                href={siteConfig.socials.twitter}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Twitter"
+                className="w-9 h-9 rounded-lg bg-white/5 hover:bg-secondary hover:text-white flex items-center justify-center text-slate-400 transition-colors"
+              >
+                <Twitter className="w-4 h-4" />
+              </a>
+              <a
+                href={siteConfig.socials.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="LinkedIn"
+                className="w-9 h-9 rounded-lg bg-white/5 hover:bg-secondary hover:text-white flex items-center justify-center text-slate-400 transition-colors"
+              >
+                <Linkedin className="w-4 h-4" />
               </a>
             </div>
           </div>
@@ -163,16 +172,6 @@ export default function Footer() {
               <li>
                 <Link to="/fleet" className="text-slate-400 hover:text-white transition-colors">
                   Our Fleet & Specs
-                </Link>
-              </li>
-              <li>
-                <Link to="/tracking" className="text-slate-400 hover:text-white transition-colors">
-                  Live Cargo Tracking
-                </Link>
-              </li>
-              <li>
-                <Link to="/quote" className="text-slate-400 hover:text-white transition-colors">
-                  Instant Freight Quote
                 </Link>
               </li>
               <li>

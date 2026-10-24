@@ -15,38 +15,38 @@ import Card from '../ui/Card';
 const differentiators = [
   {
     icon: Clock,
-    title: "99.4% On-Time Precision",
-    description: "Time-critical delivery managed by 24/7 central dispatch centers with proactive route detour simulation and milestone tracking.",
+    title: "Punctual & Fast Delivery",
+    description: "Our dedicated team works hard to make sure your move or cargo is completed by the deadline you set, with same-day delivery options for adjoining cities.",
     badge: "Reliability"
   },
   {
     icon: ShieldCheck,
-    title: "$5M Cargo Protection",
-    description: "Comprehensive motor carrier liability and high-value cargo bonding up to $5,000,000+ with zero deductible options for premium shipments.",
+    title: "Safe & Secure Cargo Handling",
+    description: "All of your goods are guaranteed to be safely delivered to your new doorstep with premium grade packing materials, careful unloading, and furniture reassembly.",
     badge: "Security"
   },
   {
     icon: Zap,
-    title: "Live GPS & IoT Telemetry",
-    description: "60-second satellite location pings, ambient trailer temperature logs, and automated geofence arrival alerts delivered to your portal.",
-    badge: "Technology"
+    title: "CPEC & Central Asia Registered",
+    description: "Registered with Central Asia Transportation License and CPEC transit routes, bringing you peace of mind with vetted drivers and proven vehicles.",
+    badge: "Compliance"
   },
   {
     icon: MapPin,
-    title: "250+ Metropolitan Corridors",
-    description: "Strategic highway hubs across Chicago, Dallas, Atlanta, and Los Angeles ensuring rapid terminal staging and transloading agility.",
+    title: "All Over Pakistan Coverage",
+    description: "Comprehensive daily service across Lahore, Karachi, Islamabad, Faisalabad, Multan, Sahiwal, Quetta, Gujranwala, Sialkot, and beyond.",
     badge: "Coverage"
   },
   {
     icon: DollarSign,
-    title: "Transparent Guaranteed Rates",
-    description: "Zero surprise detention or accessorial charges. Clear itemized rate confirmations aligned with weekly DOE fuel index baselines.",
+    title: "Affordable with No Hidden Fees",
+    description: "Competitive market rates with zero hidden charges. We accept online bank transfers, JazzCash, EasyPaisa, and cash upon doorstep delivery.",
     badge: "Pricing"
   },
   {
     icon: Headphones,
-    title: "Dedicated Dispatch Coordinators",
-    description: "Direct cell phone and email access to assigned freight specialists—never routed through impersonal offshore answering services.",
+    title: "24/7 Live Call & WhatsApp Support",
+    description: "Direct live assistance from our logistics coordinators and CEO desk via phone (+92 300-6539785) or WhatsApp for any questions and instant bookings.",
     badge: "Support"
   }
 ];

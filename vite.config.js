@@ -8,6 +8,13 @@ export default defineConfig({
     port: 3000,
     open: false,
     host: true,
+    // Proxy /api requests to the Express email server (dev only)
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3001',
+        changeOrigin: true,
+      },
+    },
   },
   build: {
     rollupOptions: {

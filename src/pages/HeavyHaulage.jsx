@@ -1,11 +1,11 @@
 import React from 'react';
-import { 
-  ShieldAlert, 
-  ShieldCheck, 
-  CheckCircle2, 
-  ArrowRight, 
-  Layers, 
-  HardHat, 
+import {
+  ShieldAlert,
+  ShieldCheck,
+  CheckCircle2,
+  ArrowRight,
+  Layers,
+  HardHat,
   FileText,
   MapPin
 } from 'lucide-react';
@@ -40,8 +40,8 @@ export default function HeavyHaulage() {
   return (
     <>
       <SEO
-        title="Heavy Haulage & Oversized Freight - Multi-Axle RGN Lowboys up to 120 Tons"
-        description="Subhan Carriers delivers specialized heavy haul transport, multi-axle modular lowboys, full DOT state permitting, route engineering surveys, and pilot car escorts."
+        title="Commercial Relocation & Heavy Cargo - Subhan Carriers Pakistan"
+        description="Subhan Carriers is the #1 commercial relocation company in Pakistan. Professional office movers, heavy industrial machinery, and CPEC route transport."
         canonical="/services/heavy-haulage"
         schemaJson={breadcrumbSchema}
       />
@@ -52,39 +52,39 @@ export default function HeavyHaulage() {
         subtitle={service.tagline}
         breadcrumbs={breadcrumbs}
       >
-        <Button to="/quote?service=heavy-haulage" variant="accent" size="md" icon={ArrowRight}>
-          Request Heavy Haul Study
+        <Button to="/contact" variant="accent" size="md" icon={ArrowRight}>
+          Book Commercial Moving
         </Button>
         <Button to="/contact" variant="outlineWhite" size="md">
-          Consult Project Engineers
+          Consult Move Coordinator
         </Button>
       </PageHeader>
 
       {/* Main Content */}
-      <section className="py-20 md:py-28 bg-white">
+      <section className="py-20 md:py-28 bg-white dark:bg-slate-900 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20">
-            
+
             <div className="lg:col-span-7 space-y-6">
-              <span className="text-xs font-bold uppercase tracking-wider text-secondary px-3 py-1 rounded-full bg-secondary/10 border border-secondary/20 inline-block">
-                Engineered Transport Logistics
+              <span className="text-xs font-bold uppercase tracking-wider text-secondary dark:text-secondary-400 px-3 py-1 rounded-full bg-secondary/10 border border-secondary/20 inline-block">
+                Commercial & Industrial Freight
               </span>
 
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold font-heading text-heading leading-tight">
-                Moving Industrial Superloads Exceeding 120 Tons with Flawless Execution
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold font-heading text-heading dark:text-white leading-tight">
+                Pakistan's Leading Commercial Relocation & Industrial Machinery Transporters
               </h2>
 
-              <p className="text-base text-body leading-relaxed">
-                Transporting oversized industrial turbines, wind energy blades, mining excavators, and civil infrastructure girders demands specialized engineering expertise far beyond conventional trucking.
+              <p className="text-base text-body dark:text-slate-300 leading-relaxed">
+                Subhan Carriers is the number one commercial relocation company in Pakistan. Our professional office movers pack and load all office and business equipment with excellent skills and finesse. Our company relocation services allow us to remain by our client's side throughout the process, from packing all the way to unloading of every single item.
               </p>
 
-              <p className="text-base text-body leading-relaxed">
-                Subhan Carriers' dedicated Heavy Haul Division manages every phase of the project: from in-house route height and turn-radius surveys, municipal and state DOT permit acquisitions, to coordinating civilian pilot car escorts and utility line-lifting crews.
+              <p className="text-base text-body dark:text-slate-300 leading-relaxed">
+                Whether relocating corporate headquarters, bank branches, educational institutions, or heavy textile and manufacturing plant machinery along CPEC routes, Subhan Carriers delivers guaranteed security, bonded handling, and complete peace of mind.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
                 {service.keyFeatures.map((feat, idx) => (
-                  <div key={idx} className="flex items-start gap-2.5 text-sm text-slate-800">
+                  <div key={idx} className="flex items-start gap-2.5 text-sm text-slate-800 dark:text-slate-200">
                     <CheckCircle2 className="w-4 h-4 text-highlight shrink-0 mt-0.5" />
                     <span>{feat}</span>
                   </div>
@@ -93,7 +93,7 @@ export default function HeavyHaulage() {
             </div>
 
             <div className="lg:col-span-5 relative">
-              <div className="rounded-3xl overflow-hidden shadow-soft-lg border border-slate-100">
+              <div className="rounded-3xl overflow-hidden shadow-soft-lg border border-slate-100 dark:border-slate-800">
                 <img
                   src={service.heroImage}
                   alt="Heavy Haul Multi-Axle Lowboy"
@@ -101,10 +101,10 @@ export default function HeavyHaulage() {
                 />
               </div>
 
-              <div className="mt-6 bg-surface-light rounded-2xl p-6 border border-slate-100 grid grid-cols-2 gap-4">
+              <div className="mt-6 bg-surface-light dark:bg-slate-800/60 rounded-2xl p-6 border border-slate-100 dark:border-slate-700/60 grid grid-cols-2 gap-4 transition-colors">
                 <div>
                   <div className="text-xs text-slate-400 uppercase font-semibold">Safety Record</div>
-                  <div className="text-lg font-bold text-secondary font-heading">{service.sla}</div>
+                  <div className="text-lg font-bold text-secondary dark:text-secondary-400 font-heading">{service.sla}</div>
                 </div>
                 <div>
                   <div className="text-xs text-slate-400 uppercase font-semibold">Max Payload</div>
@@ -133,8 +133,8 @@ export default function HeavyHaulage() {
 
               <div className="p-5 rounded-2xl bg-white/5 border border-white/10">
                 <div className="text-accent font-black text-2xl font-heading mb-2">02</div>
-                <h4 className="font-bold text-base text-white mb-1">Full DOT Permitting</h4>
-                <p className="text-xs text-slate-300 leading-relaxed">Managing multi-state, county, and municipal overweight/over-dimensional transport authorizations and curfew schedules.</p>
+                <h4 className="font-bold text-base text-white mb-1">Highway Permitting & NHA</h4>
+                <p className="text-xs text-slate-300 leading-relaxed">Managing NHA, National Highway & Motorway Police (NHMP), and provincial transit authorizations and escort schedules.</p>
               </div>
 
               <div className="p-5 rounded-2xl bg-white/5 border border-white/10">
@@ -161,11 +161,11 @@ export default function HeavyHaulage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {service.specifications.map((spec, sIdx) => (
-                <Card key={sIdx} className="p-6 bg-surface-light/50 border border-slate-100">
+                <Card key={sIdx} className="p-6 bg-surface-light/50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-700/60">
                   <div className="text-xs font-semibold uppercase text-slate-400 mb-1">
                     {spec.label}
                   </div>
-                  <div className="text-base font-bold font-heading text-heading">
+                  <div className="text-base font-bold font-heading text-heading dark:text-white">
                     {spec.value}
                   </div>
                 </Card>
@@ -183,11 +183,11 @@ export default function HeavyHaulage() {
 
             <div className="max-w-3xl mx-auto space-y-4">
               {service.faqs.map((faq, fIdx) => (
-                <div key={fIdx} className="p-6 rounded-2xl bg-surface-light border border-slate-100">
-                  <h4 className="font-heading font-bold text-base text-heading mb-2">
+                <div key={fIdx} className="p-6 rounded-2xl bg-surface-light dark:bg-slate-800/60 border border-slate-100 dark:border-slate-700/60 transition-colors">
+                  <h4 className="font-heading font-bold text-base text-heading dark:text-white mb-2">
                     {faq.q}
                   </h4>
-                  <p className="text-sm text-body leading-relaxed">
+                  <p className="text-sm text-body dark:text-slate-300 leading-relaxed">
                     {faq.a}
                   </p>
                 </div>

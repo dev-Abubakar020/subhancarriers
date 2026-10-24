@@ -1,16 +1,18 @@
 import React from 'react';
-import { 
-  ShieldCheck, 
-  Award, 
-  Truck, 
-  Users, 
-  MapPin, 
-  Target, 
-  Compass, 
-  CheckCircle2, 
+import {
+  ShieldCheck,
+  Award,
+  Truck,
+  Users,
+  MapPin,
+  Target,
+  Compass,
+  CheckCircle2,
   ArrowRight,
   TrendingUp,
-  HeartHandshake
+  HeartHandshake,
+  Clock,
+  PhoneCall
 } from 'lucide-react';
 import SEO from '../components/ui/SEO';
 import PageHeader from '../components/ui/PageHeader';
@@ -24,44 +26,44 @@ import { siteConfig } from '../data/siteConfig';
 const coreValues = [
   {
     icon: ShieldCheck,
-    title: "Uncompromising Safety",
-    description: "Every tractor, trailer, and driver operates under strict FMCSA standards, continuous telematics, and regular safety retraining."
+    title: "Safely Moving to Doorstep",
+    description: "Every shipment, household item, and piece of machinery is treated with the utmost care, packed with multi-layer materials and safely transported."
   },
   {
     icon: Compass,
-    title: "Absolute Transparency",
-    description: "No hidden accessorial fees or ambiguous tracking. From instant digital rate confirmations to minute-by-minute GPS telematics, we believe in radical clarity."
+    title: "Honesty & No Hidden Fees",
+    description: "We do not charge any hidden fees for your moving or freight. What we quote is what you pay, with complete transparency in every booking."
   },
   {
     icon: TrendingUp,
-    title: "Operational Precision",
-    description: "Supply chains depend on predictable timetables. We optimize lanes to deliver a consistent 99.4% on-time milestone performance."
+    title: "Punctual Delivery Guarantee",
+    description: "Our dedicated team works hard to make sure your move or goods transport is completed by the deadline you set, without unnecessary highway delays."
   },
   {
     icon: HeartHandshake,
-    title: "Long-Term Client Partnership",
-    description: "We act as an integrated extension of your logistics department, providing assigned dispatch specialists who know your lanes and requirements."
+    title: "Manageable & Professional Team",
+    description: "From our polite drivers to our skilled packers and dispatch coordinators, our staff is trained to demolish, arrange, and set up your items with finesse."
   }
 ];
 
 const leadershipTeam = [
   {
-    name: "Tariq Subhan",
-    role: "Founder & Chief Executive Officer",
+    name: "Subtain Haider",
+    role: "Chief Executive Officer (CEO)",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80",
-    bio: "With over 25 years in commercial freight and fleet management, Tariq founded Subhan Carriers with a single tractor and an unyielding commitment to shipper trust."
+    bio: "Holding a BMS (Bachelor of Management Sciences) degree with 15+ years of leadership in goods transportation, Subtain founded Subhan Carriers with an unwavering commitment to customer trust, punctuality, and stress-free moving across Pakistan."
   },
   {
-    name: "Elena Rostova",
-    role: "VP of Supply Chain & Operations",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80",
-    bio: "Specializing in network lane optimization and automated WMS integration, Elena oversees our nationwide terminal hubs and dispatch operations."
+    name: "Dilbar Ali",
+    role: "Co-Founder & Operations Director",
+    image: "https://subhancarriers.surge.sh/assets/img/testimonials/iii.jpeg",
+    bio: "With 15+ years in inter-provincial fleet management and logistics dispatch, Dilbar directs our nationwide goods transport fleet, driver safety protocols, and motorway operations connecting Sindh, Punjab, and KPK."
   },
   {
-    name: "Marcus Vance",
-    role: "Director of Fleet & Safety Engineering",
+    name: "Ali Akbar",
+    role: "Head of Freight & Customer Coordination",
     image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80",
-    bio: "A certified Master Logistics Engineer, Marcus directs our 350+ tractor fleet telematics, SmartWay eco-efficiency, and heavy haul permitting division."
+    bio: "Ali manages our 24/7 central dispatch desk and WhatsApp coordination, ensuring instantaneous client responses, route tracking, and custom packaging support for both commercial and residential clients."
   }
 ];
 
@@ -71,59 +73,59 @@ export default function About() {
   return (
     <>
       <SEO
-        title="About Us - Our Story, Leadership & Freight Standards"
-        description="Learn about Subhan Carriers' 18+ year history of dependable road freight, modern fleet standards, corporate values, and dedicated logistics leadership."
+        title="About Us - Pakistan's Best Transportation Services | Subhan Carriers"
+        description="Learn about Subhan Carriers' 15+ year history of dependable goods transport, house shifting, professional packing, CPEC registered fleet, and dedicated leadership in Pakistan."
         canonical="/about"
       />
 
       <PageHeader
         badge="Who We Are"
-        title="18+ Years of Powering North American Supply Chains"
-        subtitle="Founded on principles of unwavering integrity, driver safety, and cutting-edge telematics, Subhan Carriers has evolved from a regional trucking provider into a nationwide logistics powerhouse."
+        title="15+ Years of Pakistan's Best Transportation Services"
+        subtitle="SUBHAN CARRIERS is a packing and moving company that provides time and cost efficient goods transport services throughout Pakistan with a team of expert packers and movers."
         breadcrumbs={breadcrumbs}
       />
 
       {/* Narrative & Story Section */}
-      <section className="py-20 md:py-28 bg-white">
+      <section className="py-20 md:py-28 bg-white dark:bg-slate-900 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
+
             {/* Left Story Content */}
             <div className="lg:col-span-7 space-y-6">
-              <span className="text-xs font-bold uppercase tracking-wider text-secondary px-3 py-1 rounded-full bg-secondary/10 border border-secondary/20 inline-block">
+              <span className="text-xs font-bold uppercase tracking-wider text-secondary dark:text-secondary-400 px-3 py-1 rounded-full bg-secondary/10 border border-secondary/20 inline-block">
                 Our Heritage & Mission
               </span>
 
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold font-heading text-heading leading-tight">
-                Built from the Highway Up to Deliver Trust on Every Single Mile
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold font-heading text-heading dark:text-white leading-tight">
+                Your Lightning Fast Delivery Partner Built on Genuine Customer Trust
               </h2>
 
-              <p className="text-base text-body leading-relaxed">
-                In 2008, Subhan Carriers began operations with a single sleeper tractor and a resolute mission: eliminate the uncertainty, communication breakdowns, and delayed shipments that historically plagued the commercial freight industry.
+              <p className="text-base text-body dark:text-slate-300 leading-relaxed">
+                <strong className="text-primary dark:text-secondary-400 font-semibold">SUBHAN CARRIERS</strong> is the best-rated moving and goods transport company in Pakistan. We provide domestic transport and shifting services in Lahore, Islamabad, Faisalabad, Multan, Sahiwal, Karachi, Quetta, Gujranwala, Sialkot, Okara, Rawalpindi, and to cities all over Pakistan safely and securely.
               </p>
 
-              <p className="text-base text-body leading-relaxed">
-                Over the past eighteen years, we have methodically expanded into a nationwide carrier operating over 350 modern tractors, 53ft composite dry vans, temperature-controlled reefers, and engineered heavy-haul trailers. We've established strategic regional terminals in key industrial logistics gateways including Chicago, Dallas, Atlanta, and Los Angeles.
+              <p className="text-base text-body dark:text-slate-300 leading-relaxed">
+                We aim to make our packing and moving services accessible to everyone in the country. Our company guarantees quality and variety when it comes to our array of services—from 10ft covered Shehzore trucks and 15ft Mazda trucks with hydraulic tailgates, to 24ft long-chassis container trucks and 40ft multi-axle freight carriers.
               </p>
 
-              <p className="text-base text-body leading-relaxed">
-                Despite our rapid institutional growth, our philosophy remains personal. When you tender a load with Subhan Carriers, you are assigned a dedicated logistics coordinator who knows your cargo, monitors your transit milestones, and remains on-call 24 hours a day, 7 days a week.
+              <p className="text-base text-body dark:text-slate-300 leading-relaxed">
+                Our company is registered in the Central Asia Transportation License and also from CPEC (China-Pakistan Economic Corridor). Subhan Carriers Goods Transport Company is growing its customers' trust upon us because we heartily understand and value the emotions of our customers, use premium-grade packing material, and do not charge any hidden fees for your moving.
               </p>
 
               <div className="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="p-4 rounded-xl bg-surface-light border border-slate-100 flex items-start gap-3">
-                  <Target className="w-6 h-6 text-secondary shrink-0 mt-0.5" />
+                <div className="p-4 rounded-xl bg-surface-light dark:bg-slate-800/60 border border-slate-100 dark:border-slate-700/60 flex items-start gap-3 transition-colors">
+                  <Target className="w-6 h-6 text-secondary dark:text-secondary-400 shrink-0 mt-0.5" />
                   <div>
-                    <h4 className="font-bold text-sm text-heading">Our Mission</h4>
-                    <p className="text-xs text-body mt-1">To provide frictionless, safe, and cost-efficient transportation that fuels our clients' competitive edge.</p>
+                    <h4 className="font-bold text-sm text-heading dark:text-white">Our Mission</h4>
+                    <p className="text-xs text-body dark:text-slate-300 mt-1">Equipped with the latest equipment and a skilled team of professionals, our mission is to provide clients with a customizable, safe, affordable, and punctual moving experience.</p>
                   </div>
                 </div>
 
-                <div className="p-4 rounded-xl bg-surface-light border border-slate-100 flex items-start gap-3">
+                <div className="p-4 rounded-xl bg-surface-light dark:bg-slate-800/60 border border-slate-100 dark:border-slate-700/60 flex items-start gap-3 transition-colors">
                   <Award className="w-6 h-6 text-accent shrink-0 mt-0.5" />
                   <div>
-                    <h4 className="font-bold text-sm text-heading">Our Vision</h4>
-                    <p className="text-xs text-body mt-1">To stand as North America's most technologically advanced and trusted medium-to-enterprise logistics carrier.</p>
+                    <h4 className="font-bold text-sm text-heading dark:text-white">Global Standard Services</h4>
+                    <p className="text-xs text-body dark:text-slate-300 mt-1">Subhan Carriers provides services that are of a global standard, available all over Pakistan, including CPEC routes and customs clearance support.</p>
                   </div>
                 </div>
               </div>
@@ -131,24 +133,29 @@ export default function About() {
 
             {/* Right Photo Collage */}
             <div className="lg:col-span-5 relative">
-              <div className="relative rounded-3xl overflow-hidden shadow-soft-lg">
+              <div className="relative rounded-3xl overflow-hidden shadow-soft-lg border border-slate-100 dark:border-slate-800">
                 <img
                   src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=1000&q=80"
-                  alt="Subhan Carriers Fleet on Highway"
+                  alt="Subhan Carriers Goods Transport Pakistan"
                   className="w-full h-[460px] object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary-950/80 via-transparent to-transparent" />
-                
+
                 {/* Floating Stats Badge */}
-                <div className="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-white/20 shadow-lg flex items-center justify-between">
+                <div className="absolute bottom-6 left-6 right-6 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md p-4 rounded-2xl border border-white/20 dark:border-slate-700/60 shadow-lg flex items-center justify-between">
                   <div>
-                    <div className="text-2xl font-black font-heading text-primary">18+ Years</div>
-                    <div className="text-xs text-slate-600 font-medium">Continuous Excellence</div>
+                    <div className="text-2xl font-black font-heading text-primary dark:text-white">15+ Years</div>
+                    <div className="text-xs text-slate-600 dark:text-slate-400 font-medium">Of Trusted Service</div>
                   </div>
-                  <div className="h-10 w-px bg-slate-200" />
+                  <div className="h-10 w-px bg-slate-200 dark:bg-slate-700" />
                   <div>
-                    <div className="text-2xl font-black font-heading text-secondary">99.4%</div>
-                    <div className="text-xs text-slate-600 font-medium">On-Time SLA Delivery</div>
+                    <div className="text-2xl font-black font-heading text-secondary dark:text-secondary-400">521+</div>
+                    <div className="text-xs text-slate-600 dark:text-slate-400 font-medium">Projects Done</div>
+                  </div>
+                  <div className="h-10 w-px bg-slate-200 dark:bg-slate-700" />
+                  <div>
+                    <div className="text-2xl font-black font-heading text-accent">232+</div>
+                    <div className="text-xs text-slate-600 dark:text-slate-400 font-medium">Happy Clients</div>
                   </div>
                 </div>
               </div>
@@ -159,27 +166,27 @@ export default function About() {
       </section>
 
       {/* Core Values Section */}
-      <section className="py-20 bg-surface-light border-y border-slate-200/60">
+      <section className="py-20 bg-surface-light dark:bg-slate-950/70 border-y border-slate-200/60 dark:border-slate-800 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
             badge="The Foundation"
-            title="The Core Values Guiding Every Dispatch"
-            subtitle="Our operational culture is defined by four core tenets that shape every client interaction and highway journey."
+            title="The Values Guiding Every Move & Shifting"
+            subtitle="Our operational commitment is to bring you complete peace of mind with safe delivery and transparent service."
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {coreValues.map((val, idx) => {
               const Icon = val.icon;
               return (
-                <Card key={idx} className="p-6 bg-white flex flex-col justify-between">
+                <Card key={idx} className="p-6 bg-white dark:bg-slate-900 flex flex-col justify-between">
                   <div>
                     <div className="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center text-secondary mb-4">
                       <Icon className="w-6 h-6" />
                     </div>
-                    <h3 className="text-lg font-bold font-heading text-heading mb-2">
+                    <h3 className="text-lg font-bold font-heading text-heading dark:text-white mb-2">
                       {val.title}
                     </h3>
-                    <p className="text-xs sm:text-sm text-body leading-relaxed">
+                    <p className="text-xs sm:text-sm text-body dark:text-slate-300 leading-relaxed">
                       {val.description}
                     </p>
                   </div>
@@ -191,17 +198,17 @@ export default function About() {
       </section>
 
       {/* Leadership Team */}
-      <section className="py-20 md:py-28 bg-white">
+      <section className="py-20 md:py-28 bg-white dark:bg-slate-900 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
             badge="Executive Leadership"
-            title="Experienced Leaders Steer Our Vision"
-            subtitle="Meet the logistics veterans guiding Subhan Carriers toward sustainable, technological leadership."
+            title="Experienced Leadership Dedicated to Your Trust"
+            subtitle="Meet the founders and coordinators leading Subhan Carriers across Pakistan."
           />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {leadershipTeam.map((member, idx) => (
-              <Card key={idx} className="bg-white border border-slate-100 overflow-hidden group">
+              <Card key={idx} className="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 overflow-hidden group">
                 <div className="relative h-72 overflow-hidden">
                   <img
                     src={member.image}
@@ -216,7 +223,7 @@ export default function About() {
                 </div>
 
                 <div className="p-6">
-                  <p className="text-xs sm:text-sm text-body leading-relaxed">
+                  <p className="text-xs sm:text-sm text-body dark:text-slate-300 leading-relaxed">
                     {member.bio}
                   </p>
                 </div>
@@ -230,7 +237,7 @@ export default function About() {
       <section className="py-16 bg-primary-900 text-white border-t border-primary-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h3 className="text-xl sm:text-2xl font-bold font-heading mb-6">
-            Certified to the Highest Industry Standards
+            Registered Under Official Logistics Authorities
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {siteConfig.certifications.slice(0, 4).map((cert, idx) => (
@@ -245,8 +252,8 @@ export default function About() {
 
       {/* CTA Banner */}
       <CTABanner
-        title="Partner with a Proven Carrier Today"
-        subtitle="Discover how Subhan Carriers can optimize your freight expenditure and deliver seamless peace of mind across all your trade lanes."
+        title="Ready to Move Safely with Pakistan's Best Carrier?"
+        subtitle="Call us directly at (+92) 300-6539785 or reach out via WhatsApp for an instant moving rate quote."
       />
     </>
   );
