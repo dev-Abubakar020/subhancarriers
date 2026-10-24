@@ -33,7 +33,7 @@ export default function Home() {
       "addressLocality": siteConfig.contact.headquarters.city,
       "addressRegion": siteConfig.contact.headquarters.state,
       "postalCode": siteConfig.contact.headquarters.zip,
-      "addressCountry": "US"
+      "addressCountry": "PK"
     },
     "geo": {
       "@type": "GeoCoordinates",
@@ -90,18 +90,18 @@ export default function Home() {
       <TestimonialsSection />
 
       {/* Recent Blog Insights */}
-      <section className="py-20 md:py-28 bg-white border-t border-slate-100">
+      <section className="py-20 md:py-28 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
             <div>
               <span className="text-xs font-bold uppercase tracking-wider text-secondary px-3 py-1 rounded-full bg-secondary/10 border border-secondary/20 inline-block mb-3">
                 Freight Intelligence
               </span>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold font-heading text-heading">
-                Latest Supply Chain & Logistics Insights
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold font-heading text-heading dark:text-white">
+                Latest Supply Chain &amp; Logistics Insights
               </h2>
             </div>
-            <Button to="/blog" variant="outline" size="sm" icon={ArrowRight}>
+            <Button to="/blog" variant="outline" size="sm" icon={ArrowRight} className="dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800">
               View All Articles
             </Button>
           </div>

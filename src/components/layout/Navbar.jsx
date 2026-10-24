@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { 
-  Truck, 
-  Phone, 
-  Mail, 
-  Menu, 
-  X, 
-  ChevronDown, 
-  ShieldCheck, 
-  Clock, 
+import {
+  Truck,
+  Phone,
+  Mail,
+  Menu,
+  X,
+  ChevronDown,
+  ShieldCheck,
+  Clock,
   ArrowRight,
   PackageCheck
 } from 'lucide-react';
@@ -44,8 +44,8 @@ export default function Navbar() {
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
-    { 
-      name: 'Services', 
+    {
+      name: 'Services',
       path: '/services',
       hasDropdown: true,
       children: [
@@ -57,7 +57,7 @@ export default function Navbar() {
       ]
     },
     { name: 'Fleet', path: '/fleet' },
-    { name: 'Track Shipment', path: '/tracking' },
+    // { name: 'Track Shipment', path: '/tracking' },
     { name: 'Blog', path: '/blog' },
     { name: 'Contact', path: '/contact' },
   ];
@@ -67,31 +67,30 @@ export default function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
       {/* Top Utility Bar (Hidden on Mobile) */}
-      <div className={`bg-primary text-slate-300 text-xs border-b border-primary-700/50 transition-all duration-300 hidden md:block ${
-        isScrolled ? 'h-0 opacity-0 overflow-hidden py-0 border-none' : 'py-2'
-      }`}>
+      <div className={`bg-primary text-slate-300 text-xs border-b border-primary-700/50 transition-all duration-300 hidden md:block ${isScrolled ? 'h-0 opacity-0 overflow-hidden py-0 border-none' : 'py-2'
+        }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-1.5 text-slate-300">
               <ShieldCheck className="w-3.5 h-3.5 text-highlight" />
-              <span>DOT Certified & Bonded Carrier #489210</span>
+              <span>CPEC & Central Asia Registered Carrier</span>
             </div>
             <div className="flex items-center gap-1.5 text-slate-300">
               <Clock className="w-3.5 h-3.5 text-accent" />
-              <span>24/7 National Dispatch & Support</span>
+              <span>24/7 Helpline & Nationwide Working</span>
             </div>
           </div>
-          
+
           <div className="flex items-center gap-6">
-            <a 
-              href={`tel:${siteConfig.contact.phonePrimary.replace(/[^\d+]/g, '')}`} 
+            <a
+              href={`tel:${siteConfig.contact.phonePrimary.replace(/[^\d+]/g, '')}`}
               className="flex items-center gap-1.5 text-slate-300 hover:text-accent transition-colors"
             >
               <Phone className="w-3.5 h-3.5 text-accent" />
               <span className="font-semibold text-white">{siteConfig.contact.phonePrimary}</span>
             </a>
-            <a 
-              href={`mailto:${siteConfig.contact.emailGeneral}`} 
+            <a
+              href={`mailto:${siteConfig.contact.emailGeneral}`}
               className="flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors"
             >
               <Mail className="w-3.5 h-3.5 text-slate-400" />
@@ -102,13 +101,12 @@ export default function Navbar() {
       </div>
 
       {/* Main Glass Navbar */}
-      <nav 
+      <nav
         aria-label="Main Navigation"
-        className={`transition-all duration-300 border-b border-slate-100 dark:border-slate-800/80 ${
-          isScrolled 
-            ? 'glass-panel shadow-soft py-3' 
-            : 'bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-sm py-4'
-        }`}
+        className={`transition-all duration-300 border-b border-slate-100 dark:border-slate-800/80 ${isScrolled
+          ? 'glass-panel shadow-soft py-3'
+          : 'bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-sm py-4'
+          }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           {/* Logo */}
@@ -131,8 +129,8 @@ export default function Navbar() {
             {navLinks.map((item) => {
               if (item.hasDropdown) {
                 return (
-                  <div 
-                    key={item.name} 
+                  <div
+                    key={item.name}
                     className="relative"
                     onMouseEnter={() => setServicesDropdownOpen(true)}
                     onMouseLeave={() => setServicesDropdownOpen(false)}
@@ -141,8 +139,8 @@ export default function Navbar() {
                       to={item.path}
                       className={({ isActive }) => `
                         px-3 py-2 rounded-lg text-sm font-semibold flex items-center gap-1 transition-all duration-200
-                        ${isServicesActive 
-                          ? 'text-secondary bg-secondary/10 dark:bg-secondary/20 font-bold' 
+                        ${isServicesActive
+                          ? 'text-secondary bg-secondary/10 dark:bg-secondary/20 font-bold'
                           : 'text-slate-700 dark:text-slate-200 hover:text-secondary dark:hover:text-secondary hover:bg-slate-50 dark:hover:bg-slate-800'}
                       `}
                     >
@@ -160,8 +158,8 @@ export default function Navbar() {
                               to={sub.path}
                               className={`
                                 block p-3 rounded-xl transition-all duration-200
-                                ${location.pathname === sub.path 
-                                  ? 'bg-secondary/10 text-secondary dark:bg-secondary/20' 
+                                ${location.pathname === sub.path
+                                  ? 'bg-secondary/10 text-secondary dark:bg-secondary/20'
                                   : 'hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 hover:text-secondary'}
                               `}
                             >
@@ -188,8 +186,8 @@ export default function Navbar() {
                   end={item.path === '/'}
                   className={({ isActive }) => `
                     px-3 py-2 rounded-lg text-sm font-semibold transition-all duration-200
-                    ${isActive 
-                      ? 'text-secondary bg-secondary/10 dark:bg-secondary/20 font-bold' 
+                    ${isActive
+                      ? 'text-secondary bg-secondary/10 dark:bg-secondary/20 font-bold'
                       : 'text-slate-700 dark:text-slate-200 hover:text-secondary dark:hover:text-secondary hover:bg-slate-50 dark:hover:bg-slate-800'}
                   `}
                 >
@@ -201,19 +199,17 @@ export default function Navbar() {
 
           {/* Desktop Right CTA Buttons & Theme Customizer */}
           <div className="hidden lg:flex items-center gap-3">
-            <Link
+            {/* <Link
               to="/tracking"
               className="text-xs font-semibold text-slate-700 dark:text-slate-200 hover:text-secondary flex items-center gap-1.5 px-3 py-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
             >
-              <PackageCheck className="w-4 h-4 text-secondary" />
               <span>Quick Track</span>
-            </Link>
+            </Link> */}
 
-            {/* Dark Mode & Pretty Colors Customizer */}
             <ThemeCustomizer />
 
             <Button
-              to="/quote"
+              to="/contact"
               variant="accent"
               size="md"
               icon={ArrowRight}
@@ -225,7 +221,7 @@ export default function Navbar() {
           {/* Mobile Hamburger & Customizer */}
           <div className="flex items-center gap-1.5 lg:hidden">
             <ThemeCustomizer />
-            
+
             <Button
               to="/quote"
               variant="accent"
@@ -234,7 +230,7 @@ export default function Navbar() {
             >
               Quote
             </Button>
-            
+
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
@@ -263,8 +259,8 @@ export default function Navbar() {
                             to={sub.path}
                             className={`
                               block px-3 py-2 rounded-xl text-sm font-medium transition-colors
-                              ${location.pathname === sub.path 
-                                ? 'bg-secondary/10 dark:bg-secondary/20 text-secondary font-bold' 
+                              ${location.pathname === sub.path
+                                ? 'bg-secondary/10 dark:bg-secondary/20 text-secondary font-bold'
                                 : 'text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800'}
                             `}
                           >
@@ -283,8 +279,8 @@ export default function Navbar() {
                     end={item.path === '/'}
                     className={({ isActive }) => `
                       block px-3 py-2.5 rounded-xl text-base font-semibold transition-colors
-                      ${isActive 
-                        ? 'bg-secondary/10 dark:bg-secondary/20 text-secondary font-bold' 
+                      ${isActive
+                        ? 'bg-secondary/10 dark:bg-secondary/20 text-secondary font-bold'
                         : 'text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800'}
                     `}
                   >
@@ -296,7 +292,7 @@ export default function Navbar() {
 
             {/* Mobile Contact Quick Actions */}
             <div className="mt-6 pt-6 border-t border-slate-100 dark:border-slate-800 space-y-3">
-              <a 
+              <a
                 href={`tel:${siteConfig.contact.phonePrimary.replace(/[^\d+]/g, '')}`}
                 className="flex items-center gap-3 px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-200 text-sm font-semibold"
               >

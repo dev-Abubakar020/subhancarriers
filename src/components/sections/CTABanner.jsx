@@ -15,7 +15,7 @@ export default function CTABanner({
       <div className="absolute -bottom-24 -right-24 w-80 h-80 bg-highlight/20 rounded-full blur-3xl pointer-events-none" />
 
       {/* Decorative highway path line */}
-      <div className="absolute inset-0 opacity-10 pointer-events-none" 
+      <div className="absolute inset-0 opacity-10 pointer-events-none"
         style={{
           backgroundImage: `radial-gradient(rgba(255, 255, 255, 0.4) 1px, transparent 1px)`,
           backgroundSize: '24px 24px'
@@ -41,7 +41,7 @@ export default function CTABanner({
             <div className="mt-4 flex flex-wrap items-center justify-center lg:justify-start gap-4 text-xs text-slate-300">
               <div className="flex items-center gap-1.5">
                 <ShieldCheck className="w-4 h-4 text-highlight" />
-                <span>$5M Cargo Protection</span>
+                <span>CPEC Registered Transit Guarantee</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-accent" />
@@ -56,7 +56,7 @@ export default function CTABanner({
 
           <div className="flex flex-col sm:flex-row items-center gap-4 shrink-0 w-full sm:w-auto">
             <Button
-              to="/quote"
+              to="/contact"
               variant="accent"
               size="lg"
               className="w-full sm:w-auto justify-center"

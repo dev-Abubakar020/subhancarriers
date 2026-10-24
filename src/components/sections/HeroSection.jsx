@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { 
-  ArrowRight, 
-  ShieldCheck, 
-  Clock, 
-  MapPin, 
-  Search, 
+import {
+  ArrowRight,
+  ShieldCheck,
+  Clock,
+  MapPin,
+  Search,
   CheckCircle,
   Truck
 } from 'lucide-react';
@@ -26,8 +26,8 @@ export default function HeroSection() {
   return (
     <section className="relative min-h-[92vh] pt-32 pb-20 md:pt-40 md:pb-28 bg-hero-gradient text-white overflow-hidden flex items-center">
       {/* Dynamic Background Noise / Grid */}
-      <div 
-        className="absolute inset-0 opacity-10 pointer-events-none" 
+      <div
+        className="absolute inset-0 opacity-10 pointer-events-none"
         style={{
           backgroundImage: `radial-gradient(rgba(255, 255, 255, 0.35) 1px, transparent 1px)`,
           backgroundSize: '28px 28px'
@@ -40,28 +40,28 @@ export default function HeroSection() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          
+
           {/* Left Hero Content (7 Cols) */}
           <div className="lg:col-span-7 space-y-6 text-left">
             <div className="inline-flex items-center gap-2">
               <Badge variant="dark" icon={ShieldCheck} className="border-secondary/40 bg-secondary/20 text-white">
-                Nationwide Commercial Logistics & Freight
+                Pakistan's Best Transportation Services
               </Badge>
             </div>
 
             <h1 className="text-3xl sm:text-5xl lg:text-[3.5rem] font-bold font-heading tracking-tight leading-[1.12] text-white">
-              Precision Freight Transport. <br />
+              Your Lightning Fast <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-orange-300 to-amber-400">
-                Delivered On Time,
-              </span> Every Mile.
+                Delivery Partner.
+              </span> Safely Moving, Every Mile.
             </h1>
 
             <p className="text-base sm:text-lg text-slate-200 leading-relaxed max-w-2xl font-normal">
-              Empowering American supply chains with modern 53ft dry vans, IoT temperature-controlled reefers, dedicated express hot-shots, and engineered heavy haul solutions backed by 24/7 telematics.
+              <strong className="text-white font-semibold">SUBHAN CARRIERS</strong> is Pakistan's best rated moving company and goods transport provider. We provide safe, reliable freight and house shifting services in Lahore, Karachi, Islamabad, Faisalabad, Multan, Sahiwal, Quetta, Gujranwala, Sialkot, Okara, Rawalpindi, and to cities all over Pakistan.
             </p>
 
             {/* Quick Track Input Bar */}
-            <div className="pt-2 max-w-xl">
+            {/* <div className="pt-2 max-w-xl">
               <form 
                 onSubmit={handleQuickTrack}
                 className="bg-white/10 backdrop-blur-md p-1.5 sm:p-2 rounded-2xl border border-white/20 flex flex-col sm:flex-row items-center gap-2 shadow-soft-lg"
@@ -103,7 +103,7 @@ export default function HeroSection() {
                   SC-77103
                 </button>
               </div>
-            </div>
+            </div> */}
 
             {/* Dual CTAs & Trust Badges */}
             <div className="pt-4 flex flex-wrap items-center gap-4">
@@ -129,15 +129,15 @@ export default function HeroSection() {
             <div className="pt-6 border-t border-white/10 grid grid-cols-2 sm:grid-cols-3 gap-4 text-xs sm:text-sm text-slate-300">
               <div className="flex items-center gap-2">
                 <CheckCircle className="w-4 h-4 text-highlight shrink-0" />
-                <span>99.4% On-Time SLA</span>
+                <span>Safely Moving to Doorstep</span>
               </div>
               <div className="flex items-center gap-2">
                 <Clock className="w-4 h-4 text-accent shrink-0" />
-                <span>24/7 Highway Dispatch</span>
+                <span>24/7 Helpline & Dispatch</span>
               </div>
               <div className="flex items-center gap-2 col-span-2 sm:col-span-1">
                 <ShieldCheck className="w-4 h-4 text-highlight shrink-0" />
-                <span>$5M Cargo Insurance</span>
+                <span>CPEC & Central Asia Registered</span>
               </div>
             </div>
           </div>
@@ -145,10 +145,10 @@ export default function HeroSection() {
           {/* Right Hero Illustration: Floating Modern Freight Vector Graphic (5 Cols) */}
           <div className="lg:col-span-5 relative flex items-center justify-center">
             <div className="relative w-full max-w-md lg:max-w-none">
-              
+
               {/* Animated Floating Graphic Container */}
               <div className="relative bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-6 sm:p-8 shadow-2xl overflow-hidden">
-                
+
                 {/* Header status bar */}
                 <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
                   <div className="flex items-center gap-2.5">
@@ -185,14 +185,14 @@ export default function HeroSection() {
                       className="animate-road-line"
                     />
 
-                    {/* Origin Waypoint (Chicago Hub) */}
+                    {/* Origin Waypoint (Faisalabad HQ / Jaranwala) */}
                     <circle cx="30" cy="120" r="7" fill="#14B8A6" />
                     <circle cx="30" cy="120" r="14" stroke="#14B8A6" strokeWidth="2" opacity="0.4" className="animate-pulse" />
-                    <text x="25" y="148" fill="#FFFFFF" fontSize="10" fontWeight="bold">Chicago HQ</text>
+                    <text x="18" y="148" fill="#FFFFFF" fontSize="10" fontWeight="bold">Faisalabad HQ</text>
 
-                    {/* Intermediate Waypoint (Nashville Transit) */}
+                    {/* Intermediate Waypoint (Multan Transit Depot) */}
                     <circle cx="180" cy="40" r="6" fill="#1D4ED8" />
-                    <text x="155" y="22" fill="#E2E8F0" fontSize="10">Nashville Depot</text>
+                    <text x="145" y="22" fill="#E2E8F0" fontSize="10">Multan Transit Depot</text>
 
                     {/* Current Vehicle Position (Truck Indicator) */}
                     <g transform="translate(245, 60)">
@@ -203,10 +203,10 @@ export default function HeroSection() {
                       <circle cx="8" cy="8" r="2.5" fill="#0B1F3A" />
                     </g>
 
-                    {/* Destination Waypoint (Atlanta Gateway) */}
+                    {/* Destination Waypoint (Karachi Port Terminal) */}
                     <circle cx="330" cy="70" r="7" fill="#FF8A00" />
                     <circle cx="330" cy="70" r="14" stroke="#FF8A00" strokeWidth="2" opacity="0.4" className="animate-pulse" />
-                    <text x="300" y="100" fill="#FFFFFF" fontSize="10" fontWeight="bold">Atlanta Hub</text>
+                    <text x="290" y="100" fill="#FFFFFF" fontSize="10" fontWeight="bold">Karachi Port</text>
                   </svg>
                 </div>
 
@@ -214,15 +214,15 @@ export default function HeroSection() {
                 <div className="grid grid-cols-3 gap-2 pt-4 border-t border-white/10 text-center">
                   <div className="bg-white/5 rounded-xl p-2.5">
                     <span className="block text-[10px] text-slate-400 uppercase">Speed</span>
-                    <span className="font-mono text-sm sm:text-base font-bold text-white">64 MPH</span>
+                    <span className="font-mono text-sm sm:text-base font-bold text-white">78 KM/H</span>
                   </div>
                   <div className="bg-white/5 rounded-xl p-2.5">
-                    <span className="block text-[10px] text-slate-400 uppercase">Reefer Temp</span>
-                    <span className="font-mono text-sm sm:text-base font-bold text-highlight">-4.2°F</span>
+                    <span className="block text-[10px] text-slate-400 uppercase">Cargo Status</span>
+                    <span className="font-mono text-sm sm:text-base font-bold text-highlight">Secured</span>
                   </div>
                   <div className="bg-white/5 rounded-xl p-2.5">
                     <span className="block text-[10px] text-slate-400 uppercase">Est. Arrival</span>
-                    <span className="font-mono text-sm sm:text-base font-bold text-accent">04:45 PM</span>
+                    <span className="font-mono text-sm sm:text-base font-bold text-accent">Today 6 PM</span>
                   </div>
                 </div>
 
@@ -230,7 +230,7 @@ export default function HeroSection() {
                 <div className="mt-4 bg-gradient-to-r from-secondary/80 to-primary/80 backdrop-blur-md rounded-xl p-3 border border-white/15 flex items-center justify-between text-xs">
                   <div className="flex items-center gap-2">
                     <MapPin className="w-4 h-4 text-accent shrink-0" />
-                    <span>In Transit: I-65 Southbound (MM 182)</span>
+                    <span>In Transit: M-4 Motorway Southbound (Pass Sukkur)</span>
                   </div>
                   <span className="text-[10px] bg-emerald-500/20 text-emerald-300 font-semibold px-2 py-0.5 rounded-full border border-emerald-500/30">
                     On Schedule

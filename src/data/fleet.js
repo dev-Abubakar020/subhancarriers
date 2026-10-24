@@ -1,117 +1,140 @@
 export const fleetVehicles = [
   {
-    id: "freight-tractors",
-    name: "Aerodynamic Long-Haul Tractors",
-    model: "Freightliner Cascadia & Kenworth T680",
-    category: "Highway Tractors",
+    id: "15ft-mazda-tailgate",
+    name: "15ft Mazda Titan Truck with Hydraulic Tailgate",
+    model: "Mazda Titan / Isuzu Forward 15ft",
+    category: "Inter-City Freight Workhorse",
     image: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1000&q=80",
-    description: "EPA SmartWay-certified sleeper cab tractors equipped with Detroit DD15 505HP engines, active lane assist, forward collision mitigation, and in-cab satellite telematics.",
+    description: "Equipped with a hydraulic power tailgate for easy loading and unloading of household furniture, machinery, and commercial pallets across all Pakistan highway routes.",
     specs: {
-      horsepower: "505 HP @ 1,625 RPM",
-      fuelEfficiency: "7.8 - 8.4 MPG (SmartWay)",
-      payloadTowing: "80,000 lbs Gross Vehicle Weight (GVW)",
-      telematics: "60-sec GPS + J1939 Engine Diagnostics",
-      safety: "Detroit Assurance 5.0 with Active Brake Assist"
+      horsepower: "155 HP Turbo Diesel",
+      fuelEfficiency: "Reliable highway performance",
+      payloadTowing: "Up to 7,000 kg (7 Tons)",
+      telematics: "Active Route Telemetry & Driver Hotline",
+      safety: "All-Steel Reinforced Cargo Box with Hydraulic Tailgate"
     },
-    countInFleet: "185 Units",
-    averageAge: "1.8 Years",
+    countInFleet: "18 Units",
+    averageAge: "Well Maintained Fleet",
     features: [
-      "Dual Sleepers for Non-Stop Expedited Teams",
-      "Auxiliary Power Units (APU) for Zero-Idle Cab Climate",
-      "Predictive Powertrain Cruise Control",
-      "Blind Spot Radar & Digital Surround Cameras"
+      "Hydraulic Tailgate for Heavy Furniture & Equipment",
+      "Spacious 15ft Deck Length for Complete House Shifting",
+      "Weatherproof Waterproof Tarpaulin / Container Body",
+      "Regularly Serviced for Motorway & Highway Reliability"
     ]
   },
   {
-    id: "reefer-trailers",
-    name: "53-Foot Multi-Zone Reefer Trailers",
-    model: "Great Dane Everest with Thermo King Precedent S-600",
-    category: "Temperature Controlled",
-    image: "https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=1000&q=80",
-    description: "Multi-temperature refrigerated trailers engineered for pharmaceuticals, dairy, fresh agricultural produce, and frozen goods with remote temperature control.",
-    specs: {
-      temperatureRange: "-20°F to +70°F (-29°C to +21°C)",
-      internalVolume: "3,850 Cubic Feet",
-      palletCapacity: "26 Standard 48x40-inch Pallets",
-      doorSensors: "Automated Door-Open Telemetry",
-      certification: "FDA Food Safety Modernization Act (FSMA) Compliant"
-    },
-    countInFleet: "95 Units",
-    averageAge: "1.4 Years",
-    features: [
-      "Continuous Cellular Temperature Telematics",
-      "Micro-Channel High-Efficiency Evaporator Coils",
-      "E-Track Cargo Tie-Down System with Shoring Beams",
-      "Remote Set-Point Override by Dispatch"
-    ]
-  },
-  {
-    id: "dry-van-trailers",
-    name: "53-Foot High-Cube Dry Van Trailers",
-    model: "Wabash National DuraPlate & Great Dane Champion",
-    category: "Dry Freight",
+    id: "10ft-covered-tailgate",
+    name: "10ft Covered Truck with Tailgate (Shehzore / Porter)",
+    model: "Hyundai Shehzore / Kia Frontier 10ft Covered",
+    category: "Urban & Shifting Transport",
     image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1000&q=80",
-    description: "Composite plate dry vans providing maximum interior cubic capacity and moisture-sealed protection for general freight, retail distribution, and industrial parts.",
+    description: "The ideal vehicle for city moves, apartment shifting, and commercial carton transport with a covered waterproof enclosure and easy tailgate access.",
     specs: {
-      interiorHeight: "110 Inches Clear Height",
-      interiorWidth: "101.5 Inches",
-      payloadCapacity: "45,000 lbs (20,400 kg)",
-      floorRating: "20,000 lbs Forklift Axle Floor Rating",
-      doorStyle: "Swing Barn Doors with Anti-Theft Lock Rods"
+      horsepower: "2.6L Diesel Engine",
+      fuelEfficiency: "High urban fuel efficiency",
+      payloadTowing: "Up to 3,500 kg (3.5 Tons)",
+      telematics: "Direct Driver Dispatch Coordination",
+      safety: "Fully Covered Lockable Cargo Box"
     },
-    countInFleet: "240 Units",
-    averageAge: "2.1 Years",
+    countInFleet: "14 Units",
+    averageAge: "Modern Clean Fleet",
     features: [
-      "DuraPlate Composite Walls for Zero Snagging",
-      "Full Logistic E-Tracks Every 16 Inches",
-      "Translucent Roof Panels with Interior LED Strips",
-      "Tire Inflation & Auto-Pressure Maintenance Systems"
+      "Compact Maneuverability for Narrow City Streets",
+      "Covered Body Protects from Rain, Dust & Sun",
+      "Tailgate Access for Smooth Ground-Level Loading",
+      "Fast Same-Day Booking & Punctual Dispatch"
     ]
   },
   {
-    id: "heavy-haul-lowboys",
-    name: "Multi-Axle Heavy Haul & RGN Trailers",
-    model: "Trail King & Fontaine Magnitude Lowboy / Step-Deck",
-    category: "Heavy & Oversized",
-    image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1000&q=80",
-    description: "Hydraulic Removable Gooseneck (RGN) and multi-axle modular trailers capable of loading oversized excavators, generators, wind turbine components, and bridge beams.",
+    id: "10ft-open-truck",
+    name: "10ft Open Body Goods Truck",
+    model: "Master Foton / Shehzore Open Bed 10ft",
+    category: "Open Cargo & Local Moving",
+    image: "https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=1000&q=80",
+    description: "Versatile open-body truck fitted with heavy tarpaulin covers, optimal for raw materials, construction items, and open-top goods moving across urban hubs.",
     specs: {
-      payloadCapacity: "Up to 240,000 lbs (120 Tons)",
-      axleConfigurations: "3-Axle to 9-Axle Steerable Modular Combos",
-      deckHeight: "18 - 24 Inches Ground Clearance",
-      wellLength: "26 to 48 Feet Extendable Deck",
-      ramps: "Hydraulic Front Flip Ramps for Drive-On Equipment"
+      horsepower: "Heavy Duty Diesel Engine",
+      fuelEfficiency: "Standard Cargo Efficiency",
+      payloadTowing: "Up to 3,500 kg (3.5 Tons)",
+      telematics: "GPS Verified Transit",
+      safety: "High Sideboards with Heavy Tie-Down Hooks"
     },
-    countInFleet: "42 Units",
-    averageAge: "2.5 Years",
+    countInFleet: "12 Units",
+    averageAge: "Continuously Maintained",
     features: [
-      "Detachable Hydraulic Neck for Fast Drive-On Loading",
-      "Independent Air Ride Suspension with Manual Override",
-      "Outriggers for Extra-Wide Over-Dimensional Loads",
-      "Equipped with Amber Strobe Packages & Escort Radios"
+      "Open Top for Overhead Crane or Forklift Loading",
+      "Complete Heavy Rainproof Tarpaulin & Rope Lashing",
+      "Affordable Market-Competitive Rates",
+      "Quick Turnaround for Urgent Goods Dispatches"
     ]
   },
   {
-    id: "expedited-hotshot",
-    name: "Expedited Straight Trucks & Sprinters",
-    model: "Freightliner M2 106 & Mercedes-Benz Sprinter 3500XD",
-    category: "Expedited & Hot-Shot",
+    id: "15ft-heavy-truck",
+    name: "15ft Heavy Goods Truck without Tailgate",
+    model: "Isuzu NPR / Hino Dutro 15ft Platform",
+    category: "Heavy & Industrial Cargo",
     image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1000&q=80",
-    description: "Fast-dispatch commercial vehicles equipped with hydraulic liftgates for urgent, time-sensitive freight deliveries without requiring traditional loading docks.",
+    description: "High-capacity rigid platform truck designed for heavy industrial goods, textile fabric rolls, agricultural grain bags, and steel hardware across provincial borders.",
     specs: {
-      straightTruckPayload: "Up to 12,000 lbs (Box Truck 26ft)",
-      sprinterPayload: "Up to 4,500 lbs (Cargo Van)",
-      liftgateCapacity: "3,500 lbs Tuck-Under Hydraulic Lift",
-      speedProfile: "Rapid Point-to-Point Direct Transit",
-      access: "Residential, Jobsite & Commercial Ground-Level"
+      horsepower: "175 HP Heavy Diesel",
+      fuelEfficiency: "Heavy Highway Optimized",
+      payloadTowing: "Up to 10,000 kg (10 Tons)",
+      telematics: "Highway Checkpoint Verified",
+      safety: "Reinforced Chassis & Heavy Duty Suspension"
     },
-    countInFleet: "60 Units",
-    averageAge: "1.2 Years",
+    countInFleet: "10 Units",
+    averageAge: "Industrial Grade",
     features: [
-      "Direct Priority Dispatch within 45 Minutes",
-      "Dedicated Non-Stop Driver Routing",
-      "Heavy-Duty Hydraulic Power Liftgate",
-      "Side Door Access for Small Crate Unloading"
+      "Engineered for Heavy Weight Density Loads",
+      "High Side Grill Panels with Tie-Down Lashing",
+      "Direct Inter-Provincial Route Authority",
+      "Experienced Senior Long-Haul Highway Drivers"
+    ]
+  },
+  {
+    id: "24ft-container-truck",
+    name: "24ft Long-Chassis Truck with Hydraulic Tailgate",
+    model: "Hino 500 / Isuzu FVR 24ft High-Cube",
+    category: "Long-Haul & Mega Moving",
+    image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1000&q=80",
+    description: "Large 24-foot enclosed container vehicle with hydraulic tailgate, engineered for full corporate office relocations, large bungalows, and FMCG distributor logistics.",
+    specs: {
+      horsepower: "260 HP Intercooled Turbo Diesel",
+      fuelEfficiency: "Long-Haul Motorway Cruiser",
+      payloadTowing: "Up to 15,000 kg (15 Tons)",
+      telematics: "GPS Tracking & Motorway E-Tag Enabled",
+      safety: "Hydraulic Power Liftgate + Tamper-Proof Seals"
+    },
+    countInFleet: "8 Units",
+    averageAge: "Highway Fleet",
+    features: [
+      "Enormous 24ft Cargo Capacity for Multi-Room Moves",
+      "Hydraulic Tailgate Handles Up to 2,000 kg Lift",
+      "Non-Stop Long-Haul Between Karachi, Lahore & Islamabad",
+      "Weather-Sealed Aluminum Composite Container"
+    ]
+  },
+  {
+    id: "cpec-40ft-trailer",
+    name: "40ft Multi-Axle Container & Flatbed Trailer",
+    model: "Hino Super Dolphin / Master CPEC Heavy Hauler",
+    category: "CPEC & Port Logistics",
+    image: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1000&q=80",
+    description: "Registered for CPEC routes and Central Asia transport licenses, connecting Karachi Port and Port Qasim to industrial dry ports across Punjab, KPK, and upcountry.",
+    specs: {
+      horsepower: "380 HP Heavy Duty Multi-Axle",
+      fuelEfficiency: "National Highway / Motorway Certified",
+      payloadTowing: "Up to 40,000 kg (40 Tons / 20ft & 40ft TEU)",
+      telematics: "Continuous Telematics & Port Pass Cleared",
+      safety: "Twist Locks for International Standard Containers"
+    },
+    countInFleet: "6 Units",
+    averageAge: "CPEC Compliant",
+    features: [
+      "Official CPEC Transit Registration & Central Asia License",
+      "Accommodates 20ft, 40ft High Cube Shipping Containers",
+      "Dedicated Route Operations Karachi to Lahore/Faisalabad",
+      "Complete Customs & Bonded Cargo Clearance Support"
     ]
   }
 ];

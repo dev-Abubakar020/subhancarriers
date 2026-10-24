@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { 
-  Truck, 
-  Gauge, 
-  ShieldCheck, 
-  Layers, 
-  ArrowRight, 
-  Check, 
-  Flame 
+import {
+  Truck,
+  Gauge,
+  ShieldCheck,
+  Layers,
+  ArrowRight,
+  Check,
+  Flame
 } from 'lucide-react';
 import { fleetVehicles } from '../../data/fleet';
 import SectionHeading from '../ui/SectionHeading';
@@ -14,10 +14,10 @@ import Card from '../ui/Card';
 import Badge from '../ui/Badge';
 import Button from '../ui/Button';
 
-export default function FleetShowcase({ 
-  limit, 
+export default function FleetShowcase({
+  limit,
   showHeader = true,
-  showFilters = true 
+  showFilters = true
 }) {
   const [selectedCategory, setSelectedCategory] = useState('All');
 
@@ -48,11 +48,10 @@ export default function FleetShowcase({
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 ${
-                  selectedCategory === cat
-                    ? 'bg-primary dark:bg-secondary text-white shadow-soft'
-                    : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
-                }`}
+                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 ${selectedCategory === cat
+                  ? 'bg-primary dark:bg-secondary text-white shadow-soft'
+                  : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
+                  }`}
               >
                 {cat}
               </button>
@@ -73,7 +72,7 @@ export default function FleetShowcase({
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary-900/80 via-transparent to-transparent" />
-                
+
                 <div className="absolute top-3 left-3">
                   <Badge variant="dark" className="text-[10px]">
                     {vehicle.category}
@@ -123,8 +122,9 @@ export default function FleetShowcase({
                 </div>
 
                 {/* Action button */}
+                {/* ?equipment=${encodeURIComponent(vehicle.name)} */}
                 <Button
-                  to={`/quote?equipment=${encodeURIComponent(vehicle.name)}`}
+                  to={`/contact`}
                   variant="outline"
                   size="sm"
                   className="w-full justify-center group-hover:border-secondary group-hover:bg-secondary group-hover:text-white dark:border-slate-700 dark:text-slate-200"
